@@ -1,0 +1,303 @@
+/* =====================================================
+   Fonts – Fira Sans
+===================================================== */
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('../webfonts/FiraSans-Light.woff2') format('woff2'),
+       url('../webfonts/FiraSans-Light.woff') format('woff');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('../webfonts/FiraSans-Regular.woff2') format('woff2'),
+       url('../webfonts/FiraSans-Regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('../webfonts/FiraSans-Bold.woff2') format('woff2'),
+       url('../webfonts/FiraSans-Bold.woff') format('woff');
+  font-weight: 700;
+}
+
+/* =====================================================
+   Root Variables
+===================================================== */
+:root {
+  --dsr-blue: #19599C;
+  --dsr-blue-dark: #005694;
+  --dsr-blue-hover: #1F6EBF;
+  --dsr-yellow: #f1d90d;
+
+  --gray-900: #1f2933;
+  --gray-600: #6b7280;
+  --gray-200: #e5e7eb;
+
+  --success-a: #EBF9DF;
+  --success-b: #CEEAB8;
+}
+
+/* =====================================================
+   Base Typography
+===================================================== */
+html {
+  font-size: calc(16px * var(--a11y-font-scale, 1));
+  height: 100%;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: 'Fira Sans', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dsr-blue);
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  min-height: 100%;
+  overflow-y: scroll;
+}
+
+
+
+/* =====================================================
+   Buttons
+===================================================== */
+.btn-primary {
+  background: var(--dsr-blue);
+  border-color: var(--dsr-blue-dark);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--dsr-blue-hover);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  background: linear-gradient(var(--dsr-blue), var(--dsr-blue-dark));
+}
+
+.btn-yellow {
+  background: var(--dsr-yellow);
+  color: var(--dsr-blue-dark);
+  border: none;
+}
+
+/* =====================================================
+   Sidebar
+===================================================== */
+
+.sidebar {
+  background: #fff;
+  border-right: 1px solid var(--gray-200);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* ⬅️ critical */
+}
+
+.sidebar ul {
+  flex: 1 1 auto;
+  overflow-y: auto; /* prevents jump */
+}
+
+
+.sidebar .nav-link {
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.sidebar .nav-link:hover {
+  background: var(--dsr-blue-hover);
+  color: #fff;
+  transform: translateY(-2px);
+  font-weight: 600;
+}
+
+.sidebar .nav-link.active {
+  background: linear-gradient(var(--dsr-blue), var(--dsr-blue-dark));
+  color: #fff;
+  font-weight: 700;
+}
+
+.logo {
+  border-bottom: 1px solid var(--gray-200);
+  padding-bottom: 10px;
+}
+
+.logo img {
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.logo-inner {
+  height: 110px;               
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-inner img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+
+.li-final {
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.li-settings {
+  padding-top: 12px;
+}
+
+.sidebar .dropdown-toggle::after {
+  margin-left: auto;
+  font-weight: bold;
+}
+
+#currentWebsite {
+  font-weight: 700;
+  color: var(--dsr-yellow);
+}
+
+.website-option {
+  cursor: pointer;
+}
+
+/* =====================================================
+   DASHBOARD (SCOPED)
+===================================================== */
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.welcome-banner{
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #f8f9fa;
+
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* ===============================
+   Dashboard Cards
+================================ */
+.dashboard-content .dashboard-card {
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.dashboard-content .dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}
+
+.dashboard-content .dashboard-card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Card header */
+.dashboard-content .dashboard-card .card-header {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: .5rem;
+}
+
+.dashboard-content .dashboard-card .card-title {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--gray-600);
+}
+
+/* Icon bubble */
+.dashboard-content .dashboard-card .card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: .6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dsr-blue);
+  color: #fff;
+}
+
+/* Values */
+.dashboard-content .card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.dashboard-content .card-subtext {
+  font-size: .9rem;
+  color: var(--gray-600);
+  margin-bottom: auto;
+}
+
+/* ===============================
+   Quick Actions Card (FIXED)
+================================ */
+.dashboard-content .quick-actions {
+  background: #ffffff;
+
+ border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+
+  padding: 1.5rem;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.dashboard-content .quick-actions:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}
+
+.dashboard-content .quick-actions h4 {
+  color: var(--dsr-blue);
+}
+
+
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 260px;
+  }
+
+  .logo img {
+    max-width: 180px;
+  }
+}
+
+
+
+@media (min-width: 768px) {
+  .offcanvas {
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
+
+
