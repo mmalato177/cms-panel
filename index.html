@@ -22,117 +22,129 @@
 <body>
 
     <div class="container-fluid">
-        <div class="row min-vh-100">
+        <div class="row">
 
             <!-- SIDEBAR -->
             <div id="sidebar"></div>
 
             <!-- MAIN DASHBOARD CONTENT -->
-            <main id="main" class="col-12 col-md-10 bg-light p-4">
+            <main id="main" class="col-12 col-md-10 bg-light">
                 <div class="dashboard-content">
                     <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
 
                     <!-- Welcome -->
                     <section class="welcome-banner">
-                        <div class="container-fluid">
-                            <h2 class="fw-bold">Welcome, Maria</h2>
-                            <p class="col-md-8">
-                                Overview of your vacation balances, auto-responders and
-                                pending requests.
-                            </p>
+                        <div class="welcome-content">
+                            <div class="welcome-text">
+                                <span class="welcome-greeting">Good morning</span>
+                                <h2 class="fw-bold">Welcome back, Leandro</h2>
+                                <p>Here's what's happening with your CMS today. You have <strong>3 pending tasks</strong> and <strong>2 new notifications</strong>.</p>
+                            </div>
+                            <div class="welcome-icon">
+                                <i class="bi bi-grid-1x2-fill"></i>
+                            </div>
                         </div>
                     </section>
 
                     <!-- Dashboard Rows -->
                     <section class="dashboard-rows">
-                        <!-- Row 1 -->
-                        <div class="row g-4 mb-4">
-                            <div class="col-md-6">
-                                <div class="card dashboard-card">
-                                    <div class="card-body d-flex flex-column">
-                                        <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h6 class="card-title mb-0">Pages</h6>
-                                            <div class="card-icon bg-blue">
-                                                <i class="bi bi-file-earmark-text"></i>
-                                            </div>
-                                        </div>
-
-                                        <p class="card-value">12</p>
-                                        <p class="card-subtext">Total pages</p>
-
-                                        <a href="#" class="btn btn-sm btn-primary mt-auto">Manage</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="card dashboard-card">
-                                    <div class="card-body d-flex flex-column">
-                                        <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h6 class="card-title mb-0">Pages</h6>
-                                            <div class="card-icon bg-blue">
-                                                <i class="bi bi-file-earmark-text"></i>
-                                            </div>
-                                        </div>
-
-                                        <p class="card-value">12</p>
-                                        <p class="card-subtext">Total pages</p>
-
-                                        <a href="#" class="btn btn-sm btn-primary mt-auto">Manage</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Row 2 -->
+                        <h5 class="section-title"><i class="bi bi-layers"></i> Overview</h5>
                         <div class="row g-4">
-                            <div class="col-md-6">
-                                <div class="card dashboard-card">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card dashboard-card card-blue">
                                     <div class="card-body d-flex flex-column">
-                                        <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h6 class="card-title mb-0">Pages</h6>
-                                            <div class="card-icon bg-blue">
-                                                <i class="bi bi-file-earmark-text"></i>
+                                        <div class="card-icon-wrapper">
+                                            <div class="card-icon">
+                                                <i class="bi bi-globe"></i>
                                             </div>
                                         </div>
-
-                                        <p class="card-value">12</p>
-                                        <p class="card-subtext">Total pages</p>
-
-                                        <a href="#" class="btn btn-sm btn-primary mt-auto">Manage</a>
+                                        <p class="card-value">3</p>
+                                        <h6 class="card-title">Websites</h6>
+                                        <p class="card-subtext">dsr24.de, kfzvs.de, ...</p>
+                                        <a href="#" class="card-link">Manage <i class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="card dashboard-card">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card dashboard-card card-green">
                                     <div class="card-body d-flex flex-column">
-                                        <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h6 class="card-title mb-0">Pages</h6>
-                                            <div class="card-icon bg-blue">
-                                                <i class="bi bi-file-earmark-text"></i>
+                                        <div class="card-icon-wrapper">
+                                            <div class="card-icon">
+                                                <i class="bi bi-briefcase"></i>
                                             </div>
                                         </div>
+                                        <p class="card-value">5</p>
+                                        <h6 class="card-title">Job Offers</h6>
+                                        <p class="card-subtext"><i class="bi bi-arrow-up"></i> +1 this week</p>
+                                        <a href="#" class="card-link">View All <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-                                        <p class="card-value">12</p>
-                                        <p class="card-subtext">Total pages</p>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card dashboard-card card-orange">
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="card-icon-wrapper">
+                                            <div class="card-icon">
+                                                <i class="bi bi-graph-up"></i>
+                                            </div>
+                                        </div>
+                                        <p class="card-value">1,248</p>
+                                        <h6 class="card-title">Visits Today</h6>
+                                        <p class="card-subtext"><i class="bi bi-arrow-up"></i> +12% vs yesterday</p>
+                                        <a href="#" class="card-link">Analytics <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-                                        <a href="#" class="btn btn-sm btn-primary mt-auto">Manage</a>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card dashboard-card card-purple">
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="card-icon-wrapper">
+                                            <div class="card-icon">
+                                                <i class="bi bi-calendar-check"></i>
+                                            </div>
+                                        </div>
+                                        <p class="card-value">18,432</p>
+                                        <h6 class="card-title">Visits This Month</h6>
+                                        <p class="card-subtext"><i class="bi bi-arrow-up"></i> +8% vs last month</p>
+                                        <a href="#" class="card-link">Full Report <i class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </section>
 
                     <!-- Quick Actions -->
                     <section class="quick-actions mt-4">
-                        <h4 class="fw-bold">Quick Actions</h4>
+                        <h5 class="section-title"><i class="bi bi-lightning-charge"></i> Quick Actions</h5>
 
-                        <div class="d-flex gap-3 flex-wrap mt-3">
-                            <button class="btn btn-light">Request Vacation</button>
-                            <button class="btn btn-light">Set Auto-Responder</button>
-                            <button class="btn btn-light">View Requests</button>
+                        <div class="quick-actions-grid">
+                            <button class="quick-action-btn">
+                                <div class="quick-action-icon bg-action-blue">
+                                    <i class="bi bi-file-earmark-plus"></i>
+                                </div>
+                                <span>New Page</span>
+                            </button>
+                            <button class="quick-action-btn">
+                                <div class="quick-action-icon bg-action-green">
+                                    <i class="bi bi-journal-plus"></i>
+                                </div>
+                                <span>New Blog Entry</span>
+                            </button>
+                            <button class="quick-action-btn">
+                                <div class="quick-action-icon bg-action-orange">
+                                    <i class="bi bi-question-circle"></i>
+                                </div>
+                                <span>New FAQ Entry</span>
+                            </button>
+                            <button class="quick-action-btn">
+                                <div class="quick-action-icon bg-action-purple">
+                                    <i class="bi bi-briefcase"></i>
+                                </div>
+                                <span>New Job Offer</span>
+                            </button>
                         </div>
                     </section>
 

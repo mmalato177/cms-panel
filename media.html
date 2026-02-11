@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Media Repository – DSR24 CMS Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/sidebar.js" defer></script>
+    <script src="/js/loadPartials.js" defer></script>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- SIDEBAR -->
+            <div id="sidebar"></div>
+
+            <!-- MAIN CONTENT -->
+            <main id="main" class="col-12 col-md-10 bg-light">
+                <div class="dashboard-content">
+                    <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+
+                    <!-- Page Header -->
+                    <section class="page-header">
+                        <div class="page-header-content">
+                            <div class="page-header-text">
+                                <h2 class="fw-bold">Media Repository</h2>
+                                <p>Central repository for photos and videos. Upload once, use across all websites.</p>
+                            </div>
+                            <button class="btn btn-primary btn-create" data-bs-toggle="modal" data-bs-target="#uploadMediaModal">
+                                <i class="bi bi-cloud-upload"></i> Upload Media
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Stats Cards -->
+                    <section class="media-stats">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <div class="stat-card stat-card-blue">
+                                    <div class="stat-icon">
+                                        <i class="bi bi-images"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <p class="stat-value" id="statImages">0</p>
+                                        <p class="stat-label">Total Images</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card stat-card-purple">
+                                    <div class="stat-icon">
+                                        <i class="bi bi-camera-video"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <p class="stat-value" id="statVideos">0</p>
+                                        <p class="stat-label">Total Videos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card stat-card-green">
+                                    <div class="stat-icon">
+                                        <i class="bi bi-hdd"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <p class="stat-value" id="statStorage">0 MB</p>
+                                        <p class="stat-label">Storage Used</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card stat-card-orange">
+                                    <div class="stat-icon">
+                                        <i class="bi bi-clock-history"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <p class="stat-value" id="statRecent">0</p>
+                                        <p class="stat-label">Uploaded This Week</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Filters -->
+                    <section class="media-filters">
+                        <div class="filters-row">
+                            <div class="filter-tabs">
+                                <button class="filter-tab active">All <span class="badge" id="filterAll">0</span></button>
+                                <button class="filter-tab">Images <span class="badge" id="filterImages">0</span></button>
+                                <button class="filter-tab">Videos <span class="badge" id="filterVideos">0</span></button>
+                            </div>
+                            <div class="filter-actions">
+                                <div class="filter-search">
+                                    <i class="bi bi-search"></i>
+                                    <input type="text" placeholder="Search media..." id="mediaSearch">
+                                </div>
+                                <div class="view-toggle">
+                                    <button class="view-btn active" data-view="grid" title="Grid View">
+                                        <i class="bi bi-grid-3x3-gap"></i>
+                                    </button>
+                                    <button class="view-btn" data-view="list" title="List View">
+                                        <i class="bi bi-list-ul"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Media Grid -->
+                    <section class="media-grid-section">
+                        <div class="media-grid" id="mediaGrid">
+                            <!-- Image 1 -->
+                            <div class="media-item" data-type="image" data-id="12454" data-filename="PICT1042.JPG" data-caption="Kfz-Sachverständigen-Kongress am 03.02.2026 in Würzburg" data-description="From left to right: Patricio, Katharina, Sebastian" data-copyright="© DSR24" data-resolution="5152x3864" data-size="4.2 MB" data-date="2026-02-03" data-noindex="false">
+                                <div class="media-thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=200&fit=crop" alt="Conference">
+                                    <div class="media-type-badge">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                    <div class="media-overlay">
+                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
+                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                                    </div>
+                                </div>
+                                <div class="media-info">
+                                    <p class="media-caption">Kfz-Sachverständigen-Kongress</p>
+                                    <div class="media-meta">
+                                        <span class="meta-resolution">5152×3864</span>
+                                        <span class="meta-date">Feb 03, 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Image 2 -->
+                            <div class="media-item" data-type="image" data-id="12455" data-filename="team_photo_2026.jpg" data-caption="DSR24 Team Meeting January 2026" data-description="Annual team meeting in the new office" data-copyright="" data-resolution="4000x3000" data-size="3.1 MB" data-date="2026-01-15" data-noindex="false">
+                                <div class="media-thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=300&h=200&fit=crop" alt="Team">
+                                    <div class="media-type-badge">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                    <div class="media-overlay">
+                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
+                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                                    </div>
+                                </div>
+                                <div class="media-info">
+                                    <p class="media-caption">DSR24 Team Meeting</p>
+                                    <div class="media-meta">
+                                        <span class="meta-resolution">4000×3000</span>
+                                        <span class="meta-date">Jan 15, 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Video 1 -->
+                            <div class="media-item" data-type="video" data-id="12456" data-filename="company_intro.mp4" data-caption="DSR24 Company Introduction Video" data-description="Official company introduction for website" data-copyright="© DSR24" data-resolution="1920x1080" data-size="45.8 MB" data-date="2026-01-20" data-noindex="false" data-poster="12454">
+                                <div class="media-thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=300&h=200&fit=crop" alt="Video">
+                                    <div class="media-type-badge badge-video">
+                                        <i class="bi bi-play-fill"></i>
+                                    </div>
+                                    <div class="media-overlay">
+                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
+                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                                    </div>
+                                </div>
+                                <div class="media-info">
+                                    <p class="media-caption">Company Introduction Video</p>
+                                    <div class="media-meta">
+                                        <span class="meta-resolution">1920×1080</span>
+                                        <span class="meta-date">Jan 20, 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Image 3 -->
+                            <div class="media-item" data-type="image" data-id="12457" data-filename="office_exterior.jpg" data-caption="DSR24 Headquarters Building" data-description="Main office building in Hessisch Oldendorf" data-copyright="" data-resolution="6000x4000" data-size="5.8 MB" data-date="2026-01-10" data-noindex="false">
+                                <div class="media-thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop" alt="Building">
+                                    <div class="media-type-badge">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                    <div class="media-overlay">
+                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
+                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                                    </div>
+                                </div>
+                                <div class="media-info">
+                                    <p class="media-caption">DSR24 Headquarters Building</p>
+                                    <div class="media-meta">
+                                        <span class="meta-resolution">6000×4000</span>
+                                        <span class="meta-date">Jan 10, 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Image 4 -->
+                            <div class="media-item" data-type="image" data-id="12458" data-filename="car_inspection.jpg" data-caption="Vehicle Inspection Process" data-description="Professional vehicle damage assessment" data-copyright="© iStockphoto.com / carexpert" data-resolution="4500x3000" data-size="3.9 MB" data-date="2026-02-01" data-noindex="false">
+                                <div class="media-thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=300&h=200&fit=crop" alt="Inspection">
+                                    <div class="media-type-badge">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                    <div class="media-overlay">
+                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
+                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                                    </div>
+                                </div>
+                                <div class="media-info">
+                                    <p class="media-caption">Vehicle Inspection Process</p>
+                                    <div class="media-meta">
+                                        <span class="meta-resolution">4500×3000</span>
+                                        <span class="meta-date">Feb 01, 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Image 5 -->
+                            <div class="media-item" data-type="image" data-id="12459" data-filename="patricio_speech.jpg" data-caption="Patricio giving a speech" data-description="CEO speech at industry conference" data-copyright="© DSR24" data-resolution="3840x2560" data-size="2.8 MB" data-date="2026-02-05" data-noindex="false">
+                                <div class="media-thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=300&h=200&fit=crop" alt="Speech">
+                                    <div class="media-type-badge">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                    <div class="media-overlay">
+                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
+                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                                    </div>
+                                </div>
+                                <div class="media-info">
+                                    <p class="media-caption">Patricio giving a speech</p>
+                                    <div class="media-meta">
+                                        <span class="meta-resolution">3840×2560</span>
+                                        <span class="meta-date">Feb 05, 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Video 2 -->
+                            <div class="media-item" data-type="video" data-id="12460" data-filename="testimonial_mueller.mp4" data-caption="Customer Testimonial - Mueller GmbH" data-description="Video testimonial from satisfied customer" data-copyright="" data-resolution="1920x1080" data-size="28.5 MB" data-date="2026-01-25" data-noindex="false">
+                                <div class="media-thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=300&h=200&fit=crop" alt="Testimonial">
+                                    <div class="media-type-badge badge-video">
+                                        <i class="bi bi-play-fill"></i>
+                                    </div>
+                                    <div class="media-overlay">
+                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
+                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                                    </div>
+                                </div>
+                                <div class="media-info">
+                                    <p class="media-caption">Customer Testimonial</p>
+                                    <div class="media-meta">
+                                        <span class="meta-resolution">1920×1080</span>
+                                        <span class="meta-date">Jan 25, 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Image 6 -->
+                            <div class="media-item" data-type="image" data-id="12461" data-filename="logo_dsr24.png" data-caption="DSR24 Official Logo" data-description="Official company logo for press and marketing" data-copyright="© DSR24" data-resolution="2000x800" data-size="156 KB" data-date="2025-12-01" data-noindex="true" data-internal="Always ask legal department before using externally">
+                                <div class="media-thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300&h=200&fit=crop" alt="Logo">
+                                    <div class="media-type-badge">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                    <div class="media-overlay">
+                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
+                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                                    </div>
+                                </div>
+                                <div class="media-info">
+                                    <p class="media-caption">DSR24 Official Logo</p>
+                                    <div class="media-meta">
+                                        <span class="meta-resolution">2000×800</span>
+                                        <span class="meta-date">Dec 01, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Upload Media Modal -->
+    <div class="modal fade" id="uploadMediaModal" tabindex="-1" aria-labelledby="uploadMediaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadMediaModalLabel">
+                        <i class="bi bi-cloud-upload"></i> Upload New Media
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="media-form" id="uploadMediaForm">
+                        <!-- Drop Zone -->
+                        <div class="upload-dropzone" id="dropZone">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                            <p>Drag & drop files here or <span class="browse-link">browse</span></p>
+                            <p class="upload-hint">Supported formats: JPG, PNG, MP4 (Max 50MB)</p>
+                            <input type="file" id="fileInput" accept="image/*,video/*" multiple hidden>
+                        </div>
+
+                        <!-- Upload Preview -->
+                        <div class="upload-preview" id="uploadPreview" style="display: none;">
+                            <div class="preview-item">
+                                <img src="" alt="Preview" id="previewImage">
+                                <div class="preview-info">
+                                    <p class="preview-filename" id="previewFilename"></p>
+                                    <p class="preview-size" id="previewSize"></p>
+                                </div>
+                                <button type="button" class="btn-remove-preview"><i class="bi bi-x-lg"></i></button>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row g-3">
+                            <!-- Caption DE -->
+                            <div class="col-md-6">
+                                <label class="form-label">Caption (German)</label>
+                                <input type="text" class="form-control" id="upload-caption-de" placeholder="Bildunterschrift...">
+                            </div>
+                            <!-- Caption EN -->
+                            <div class="col-md-6">
+                                <label class="form-label">Caption (English)</label>
+                                <input type="text" class="form-control" id="upload-caption-en" placeholder="Image caption...">
+                            </div>
+
+                            <!-- Description DE -->
+                            <div class="col-md-6">
+                                <label class="form-label">Description (German)</label>
+                                <textarea class="form-control" rows="2" id="upload-desc-de" placeholder="Optionale Beschreibung..."></textarea>
+                            </div>
+                            <!-- Description EN -->
+                            <div class="col-md-6">
+                                <label class="form-label">Description (English)</label>
+                                <textarea class="form-control" rows="2" id="upload-desc-en" placeholder="Optional description..."></textarea>
+                            </div>
+
+                            <!-- Copyright -->
+                            <div class="col-md-6">
+                                <label class="form-label">Copyright / Source</label>
+                                <input type="text" class="form-control" id="upload-copyright" placeholder="© iStockphoto.com / userXY">
+                            </div>
+
+                            <!-- Internal Comments -->
+                            <div class="col-md-6">
+                                <label class="form-label">Internal Comments <span class="text-muted">(CMS only)</span></label>
+                                <input type="text" class="form-control" id="upload-internal" placeholder="Internal notes...">
+                            </div>
+
+                            <!-- noindex -->
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="upload-noindex">
+                                    <label class="form-check-label" for="upload-noindex">
+                                        <strong>noindex</strong> - Prevent search engines from indexing this media
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="uploadMedia()">
+                        <i class="bi bi-cloud-upload"></i> Upload
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Media Modal -->
+    <div class="modal fade" id="editMediaModal" tabindex="-1" aria-labelledby="editMediaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editMediaModalLabel">
+                        <i class="bi bi-pencil"></i> Edit Media Metadata
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="media-form" id="editMediaForm">
+                        <!-- Media Info Row -->
+                        <div class="edit-media-info">
+                            <img src="" alt="Preview" id="editPreviewImage" class="edit-thumbnail">
+                            <div class="edit-file-info">
+                                <p class="edit-filename" id="editFilename"></p>
+                                <p class="edit-meta">
+                                    <span id="editResolution"></span> • 
+                                    <span id="editSize"></span> • 
+                                    <span id="editFormat"></span>
+                                </p>
+                                <p class="edit-meta text-muted">
+                                    Uploaded: <span id="editDate"></span> • 
+                                    ID: <span id="editId"></span>
+                                </p>
+                                <p class="edit-seo-url" id="editSeoUrl"></p>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row g-3">
+                            <!-- Caption DE -->
+                            <div class="col-md-6">
+                                <label class="form-label">Caption (German)</label>
+                                <input type="text" class="form-control" id="edit-caption-de">
+                            </div>
+                            <!-- Caption EN -->
+                            <div class="col-md-6">
+                                <label class="form-label">Caption (English)</label>
+                                <input type="text" class="form-control" id="edit-caption-en">
+                            </div>
+
+                            <!-- Description DE -->
+                            <div class="col-md-6">
+                                <label class="form-label">Description (German)</label>
+                                <textarea class="form-control" rows="2" id="edit-desc-de"></textarea>
+                            </div>
+                            <!-- Description EN -->
+                            <div class="col-md-6">
+                                <label class="form-label">Description (English)</label>
+                                <textarea class="form-control" rows="2" id="edit-desc-en"></textarea>
+                            </div>
+
+                            <!-- Copyright -->
+                            <div class="col-md-6">
+                                <label class="form-label">Copyright / Source</label>
+                                <input type="text" class="form-control" id="edit-copyright">
+                            </div>
+
+                            <!-- Internal Comments -->
+                            <div class="col-md-6">
+                                <label class="form-label">Internal Comments <span class="text-muted">(CMS only)</span></label>
+                                <input type="text" class="form-control" id="edit-internal">
+                            </div>
+
+                            <!-- Video Poster (for videos only) -->
+                            <div class="col-12" id="videoPosterSection" style="display: none;">
+                                <label class="form-label">Video Poster Image</label>
+                                <div class="poster-selector">
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <i class="bi bi-image"></i> Select Poster Image
+                                    </button>
+                                    <span class="poster-hint">Choose an image from the repository as video thumbnail</span>
+                                </div>
+                            </div>
+
+                            <!-- noindex -->
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="edit-noindex">
+                                    <label class="form-check-label" for="edit-noindex">
+                                        <strong>noindex</strong> - Prevent search engines from indexing this media
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger me-auto" onclick="deleteMedia()">
+                        <i class="bi bi-trash"></i> Delete
+                    </button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveMedia()">
+                        <i class="bi bi-check-lg"></i> Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="previewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-0 text-center">
+                    <img src="" alt="Preview" id="fullPreviewImage" class="full-preview-img">
+                    <button type="button" class="btn-close-preview" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                    <div class="preview-info-bar" id="previewInfoBar">
+                        <span id="previewCaption"></span>
+                        <span id="previewResolution"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">
+                        <i class="bi bi-exclamation-triangle"></i> Delete Media
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to permanently delete this media file?</p>
+                    <p class="mb-0"><strong id="delete-media-caption"></strong></p>
+                    <p class="text-danger small mt-2">
+                        <i class="bi bi-exclamation-circle"></i> This action cannot be undone. The file will be removed from all websites where it's used.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmDelete()">
+                        <i class="bi bi-trash"></i> Delete Permanently
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="successToast" class="toast" role="alert">
+            <div class="toast-header bg-success text-white">
+                <i class="bi bi-check-circle me-2"></i>
+                <strong class="me-auto">Success</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toastMessage">
+                Operation completed successfully.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentEditItem = null;
+        let currentDeleteItem = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initDropZone();
+            initMediaItems();
+            initFilters();
+            initViewToggle();
+            updateStats();
+        });
+
+        // Drag & Drop Zone
+        function initDropZone() {
+            const dropZone = document.getElementById('dropZone');
+            const fileInput = document.getElementById('fileInput');
+
+            dropZone.addEventListener('click', () => fileInput.click());
+            
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            });
+
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('dragover');
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files);
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+        }
+
+        function handleFiles(files) {
+            if (files.length === 0) return;
+            
+            const file = files[0];
+            const preview = document.getElementById('uploadPreview');
+            const previewImg = document.getElementById('previewImage');
+            const previewFilename = document.getElementById('previewFilename');
+            const previewSize = document.getElementById('previewSize');
+
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImg.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewImg.src = 'https://via.placeholder.com/100x100?text=Video';
+            }
+
+            previewFilename.textContent = file.name;
+            previewSize.textContent = formatFileSize(file.size);
+            preview.style.display = 'block';
+            document.getElementById('dropZone').style.display = 'none';
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        // Media Items Interaction
+        function initMediaItems() {
+            // Edit buttons
+            document.querySelectorAll('.btn-edit-media').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const item = this.closest('.media-item');
+                    currentEditItem = item;
+                    populateEditModal(item);
+                });
+            });
+
+            // Preview buttons
+            document.querySelectorAll('.btn-preview').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const item = this.closest('.media-item');
+                    openPreview(item);
+                });
+            });
+
+            // Click on thumbnail for preview
+            document.querySelectorAll('.media-thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const item = this.closest('.media-item');
+                    if (item.dataset.type === 'image') {
+                        openPreview(item);
+                    }
+                });
+            });
+        }
+
+        function populateEditModal(item) {
+            const img = item.querySelector('img');
+            document.getElementById('editPreviewImage').src = img.src;
+            document.getElementById('editFilename').textContent = item.dataset.filename;
+            document.getElementById('editResolution').textContent = item.dataset.resolution;
+            document.getElementById('editSize').textContent = item.dataset.size;
+            document.getElementById('editFormat').textContent = item.dataset.filename.split('.').pop().toUpperCase();
+            document.getElementById('editDate').textContent = item.dataset.date;
+            document.getElementById('editId').textContent = item.dataset.id;
+            
+            // SEO URL
+            const caption = item.dataset.caption.toLowerCase()
+                .replace(/[^a-z0-9\s]/g, '')
+                .replace(/\s+/g, '-')
+                .substring(0, 50);
+            document.getElementById('editSeoUrl').textContent = `/images/${caption}-${item.dataset.id}_640.avif`;
+
+            document.getElementById('edit-caption-en').value = item.dataset.caption;
+            document.getElementById('edit-desc-en').value = item.dataset.description || '';
+            document.getElementById('edit-copyright').value = item.dataset.copyright || '';
+            document.getElementById('edit-internal').value = item.dataset.internal || '';
+            document.getElementById('edit-noindex').checked = item.dataset.noindex === 'true';
+
+            // Show video poster section if video
+            const posterSection = document.getElementById('videoPosterSection');
+            posterSection.style.display = item.dataset.type === 'video' ? 'block' : 'none';
+        }
+
+        function openPreview(item) {
+            const img = item.querySelector('img');
+            document.getElementById('fullPreviewImage').src = img.src.replace('w=300&h=200', 'w=1200');
+            document.getElementById('previewCaption').textContent = item.dataset.caption;
+            document.getElementById('previewResolution').textContent = item.dataset.resolution;
+            
+            const modal = new bootstrap.Modal(document.getElementById('previewModal'));
+            modal.show();
+        }
+
+        // Filter functionality
+        function initFilters() {
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.textContent.trim().toLowerCase();
+                    document.querySelectorAll('.media-item').forEach(item => {
+                        if (filter.startsWith('all')) {
+                            item.style.display = '';
+                        } else if (filter.startsWith('images')) {
+                            item.style.display = item.dataset.type === 'image' ? '' : 'none';
+                        } else if (filter.startsWith('videos')) {
+                            item.style.display = item.dataset.type === 'video' ? '' : 'none';
+                        }
+                    });
+                });
+            });
+
+            // Search
+            document.getElementById('mediaSearch').addEventListener('input', function() {
+                const search = this.value.toLowerCase();
+                document.querySelectorAll('.media-item').forEach(item => {
+                    const text = (item.dataset.caption + ' ' + item.dataset.filename + ' ' + item.dataset.description).toLowerCase();
+                    item.style.display = text.includes(search) ? '' : 'none';
+                });
+            });
+        }
+
+        // View toggle
+        function initViewToggle() {
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const grid = document.getElementById('mediaGrid');
+                    if (this.dataset.view === 'list') {
+                        grid.classList.add('list-view');
+                    } else {
+                        grid.classList.remove('list-view');
+                    }
+                });
+            });
+        }
+
+        // Save media
+        function saveMedia() {
+            if (!currentEditItem) return;
+
+            // Update data attributes
+            currentEditItem.dataset.caption = document.getElementById('edit-caption-en').value;
+            currentEditItem.dataset.description = document.getElementById('edit-desc-en').value;
+            currentEditItem.dataset.copyright = document.getElementById('edit-copyright').value;
+            currentEditItem.dataset.internal = document.getElementById('edit-internal').value;
+            currentEditItem.dataset.noindex = document.getElementById('edit-noindex').checked;
+
+            // Update visible caption
+            currentEditItem.querySelector('.media-caption').textContent = document.getElementById('edit-caption-en').value;
+
+            bootstrap.Modal.getInstance(document.getElementById('editMediaModal')).hide();
+            showToast('Media metadata updated successfully!');
+        }
+
+        // Delete media
+        function deleteMedia() {
+            currentDeleteItem = currentEditItem;
+            document.getElementById('delete-media-caption').textContent = currentEditItem.dataset.caption;
+            
+            bootstrap.Modal.getInstance(document.getElementById('editMediaModal')).hide();
+            const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+            deleteModal.show();
+        }
+
+        function confirmDelete() {
+            if (!currentDeleteItem) return;
+            
+            currentDeleteItem.style.transition = 'opacity 0.3s, transform 0.3s';
+            currentDeleteItem.style.opacity = '0';
+            currentDeleteItem.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                currentDeleteItem.remove();
+                updateStats();
+            }, 300);
+
+            bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
+            showToast('Media file deleted successfully!');
+        }
+
+        // Upload media
+        function uploadMedia() {
+            const preview = document.getElementById('uploadPreview');
+            if (preview.style.display === 'none') {
+                alert('Please select a file to upload.');
+                return;
+            }
+
+            // Simulate upload (would be API call in real implementation)
+            bootstrap.Modal.getInstance(document.getElementById('uploadMediaModal')).hide();
+            
+            // Reset form
+            preview.style.display = 'none';
+            document.getElementById('dropZone').style.display = '';
+            document.getElementById('uploadMediaForm').reset();
+            
+            showToast('Media file uploaded successfully! AVIF versions are being generated.');
+            updateStats();
+        }
+
+        // Update stats
+        function updateStats() {
+            const allItems = document.querySelectorAll('.media-item');
+            const images = document.querySelectorAll('.media-item[data-type="image"]').length;
+            const videos = document.querySelectorAll('.media-item[data-type="video"]').length;
+            const total = images + videos;
+            
+            // Calculate total storage from data-size attributes
+            let totalBytes = 0;
+            allItems.forEach(item => {
+                const sizeStr = item.dataset.size || '0';
+                const size = parseFloat(sizeStr);
+                if (sizeStr.includes('GB')) {
+                    totalBytes += size * 1024 * 1024 * 1024;
+                } else if (sizeStr.includes('MB')) {
+                    totalBytes += size * 1024 * 1024;
+                } else if (sizeStr.includes('KB')) {
+                    totalBytes += size * 1024;
+                }
+            });
+            
+            // Format storage
+            let storageStr;
+            if (totalBytes >= 1024 * 1024 * 1024) {
+                storageStr = (totalBytes / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
+            } else {
+                storageStr = (totalBytes / (1024 * 1024)).toFixed(1) + ' MB';
+            }
+            
+            // Calculate uploads this week (items with date in last 7 days)
+            const now = new Date();
+            const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+            let recentCount = 0;
+            allItems.forEach(item => {
+                const dateStr = item.dataset.date;
+                if (dateStr) {
+                    const itemDate = new Date(dateStr);
+                    if (itemDate >= oneWeekAgo) {
+                        recentCount++;
+                    }
+                }
+            });
+            
+            // Update stats cards
+            document.getElementById('statImages').textContent = images;
+            document.getElementById('statVideos').textContent = videos;
+            document.getElementById('statStorage').textContent = storageStr;
+            document.getElementById('statRecent').textContent = recentCount;
+            
+            // Update filter badges
+            document.getElementById('filterAll').textContent = total;
+            document.getElementById('filterImages').textContent = images;
+            document.getElementById('filterVideos').textContent = videos;
+        }
+
+        // Show toast
+        function showToast(message) {
+            document.getElementById('toastMessage').textContent = message;
+            const toast = new bootstrap.Toast(document.getElementById('successToast'));
+            toast.show();
+        }
+    </script>
+
+</body>
+
+</html>
