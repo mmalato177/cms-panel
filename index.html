@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/dropdown.js" defer></script>
+    <script src="/js/sidebar.js" defer></script>
+    <script src="/js/loadPartials.js" defer></script>
+
 </head>
 
 <body>
@@ -22,61 +24,13 @@
     <div class="container-fluid">
         <div class="row min-vh-100">
 
-            <!-- Mobile Top Bar -->
-            <div class="d-md-none bg-white border-bottom p-2 d-flex align-items-center">
-                <button class="btn btn-outline-primary me-2" data-bs-toggle="offcanvas"
-                    data-bs-target="#sidebarOffcanvas">
-                    <i class="bi bi-list"></i>
-                </button>
-
-                <strong>DSR24</strong>
-            </div>
-
-
-            <!-- Sidebar -->
-            <aside id="sidebar" class="sidebar col-12 col-md-2 p-3 d-none d-md-flex">
-
-                <div class="logo mb-4 text-center">
-                    <div class="logo-inner">
-                        <img src="assets/img/dsr24.png" alt="DSR24 Logo">
-                    </div>
-                </div>
-                <ul class="nav flex-column gap-2 flex-grow-1">
-
-                    <!-- Website switcher -->
-                    <li class="nav-item li-final">
-                        <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center" href="#"
-                            data-bs-toggle="collapse" data-bs-target="#websiteDropdown" aria-expanded="false"
-                            id="mainWebsite">
-                            <span id="currentWebsite">dsr24.de</span>
-                        </a>
-
-                        <ul class="collapse list-unstyled ps-3 mt-2" id="websiteDropdown">
-                            <li>
-                                <a class="nav-link website-option" href="#" data-value="kfzvs.de">kfzvs.de</a>
-                            </li>
-                            <li>
-                                <a class="nav-link website-option" href="#"
-                                    data-value="dsgutachten.de">dsgutachten.de</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-link active">Dashboard</li>
-                    <li class="nav-link">Pages</li>
-                    <li class="nav-link">Blog</li>
-                    <li class="nav-link li-final">FAQ</li>
-                    <li class="nav-link">Media</li>
-                    <li class="nav-link">Downloads</li>
-                    <li class="nav-link li-final">Jobs</li>
-
-                    <li class="nav-link li-settings mt-auto">Settings</li>
-                </ul>
-            </aside>
+            <!-- SIDEBAR -->
+            <div id="sidebar"></div>
 
             <!-- MAIN DASHBOARD CONTENT -->
-            <main class="col-12 col-md-10 bg-light p-4">
+            <main id="main" class="col-12 col-md-10 bg-light p-4">
                 <div class="dashboard-content">
+                    <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
 
                     <!-- Welcome -->
                     <section class="welcome-banner">

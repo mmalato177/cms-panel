@@ -4,21 +4,21 @@
 @font-face {
   font-family: 'Fira Sans';
   src: url('../webfonts/FiraSans-Light.woff2') format('woff2'),
-       url('../webfonts/FiraSans-Light.woff') format('woff');
+    url('../webfonts/FiraSans-Light.woff') format('woff');
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'Fira Sans';
   src: url('../webfonts/FiraSans-Regular.woff2') format('woff2'),
-       url('../webfonts/FiraSans-Regular.woff') format('woff');
+    url('../webfonts/FiraSans-Regular.woff') format('woff');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Fira Sans';
   src: url('../webfonts/FiraSans-Bold.woff2') format('woff2'),
-       url('../webfonts/FiraSans-Bold.woff') format('woff');
+    url('../webfonts/FiraSans-Bold.woff') format('woff');
   font-weight: 700;
 }
 
@@ -55,16 +55,35 @@ textarea {
   font-family: 'Fira Sans', Arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--dsr-blue);
 }
 
+
+
 body {
   margin: 0;
+  font-family: 'Fira Sans', Arial, sans-serif;
   background: #fff;
-  min-height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
+body.preload .sidebar {
+  transition: none !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul{list-style: none;}
 
 
 
@@ -97,54 +116,52 @@ body {
 ===================================================== */
 
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 300px;
   background: #fff;
   border-right: 1px solid var(--gray-200);
-  height: 100vh;
+  transition: transform 0.4s ease;
+  will-change: transform;
+
+  z-index: 1000;
+
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* ⬅️ critical */
+  
 }
 
-.sidebar ul {
-  flex: 1 1 auto;
-  overflow-y: auto; /* prevents jump */
+/* Closed state */
+.sidebar.closed {
+  transform: translateX(-100%);
 }
 
-
-.sidebar .nav-link {
-  color: #333;
-  padding: 8px 12px;
-  border-radius: 8px;
+/* =====================================================
+   Close Button (Top Right)
+===================================================== */
+.closebtn {
+  display: none;
+  position: absolute;
+  right: 5px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-600);
 }
 
-.sidebar .nav-link:hover {
-  background: var(--dsr-blue-hover);
-  color: #fff;
-  transform: translateY(-2px);
-  font-weight: 600;
-}
-
-.sidebar .nav-link.active {
-  background: linear-gradient(var(--dsr-blue), var(--dsr-blue-dark));
-  color: #fff;
-  font-weight: 700;
-}
-
-.logo {
-  border-bottom: 1px solid var(--gray-200);
-  padding-bottom: 10px;
-}
-
-.logo img {
-  max-width: 100%;
-  padding: 1rem;
-}
-
+/* =====================================================
+   Logo
+===================================================== */
 .logo-inner {
-  height: 110px;               
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 30px;
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .logo-inner img {
@@ -153,19 +170,105 @@ body {
   object-fit: contain;
 }
 
+/* =====================================================
+   Navigation
+===================================================== */
+.nav-menu {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+}
 
+.nav-menu li {
+  margin-bottom: 6px;
+}
+
+.nav-menu a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #333;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.nav-menu a:hover {
+  background: var(--dsr-blue-hover);
+  color: #fff;
+  transform: translateY(-2px);
+  font-weight: 600;
+}
+
+/* Active */
+.nav-menu a.active {
+  background: linear-gradient(var(--dsr-blue), var(--dsr-blue-dark));
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Separator */
 .li-final {
   border-bottom: 1px solid var(--gray-200);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-.li-settings {
-  padding-top: 12px;
-}
-
-.sidebar .dropdown-toggle::after {
-  margin-left: auto;
+/* =====================================================
+   Dropdown
+===================================================== */
+.dropdown-toggle::after {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+   margin-left: auto;
   font-weight: bold;
 }
+/* Rotate arrow when open */
+.dropdown-toggle::after {
+  margin-left: auto;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-toggle.active::after {
+  transform: rotate(180deg);
+}
+
+/* Sidebar Embedded Submenu */
+.sidebar-submenu {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 6px;
+
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+}
+
+.sidebar-submenu.open {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.sidebar-submenu li {
+  margin-bottom: 4px;
+}
+
+.sidebar-submenu a {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.sidebar-submenu a:hover {
+  opacity: 1;
+}
+
+
+
+
+
 
 #currentWebsite {
   font-weight: 700;
@@ -174,6 +277,65 @@ body {
 
 .website-option {
   cursor: pointer;
+}
+/* =====================================================
+   Settings Fixed Bottom
+===================================================== */
+.settings-wrapper {
+  margin-top: auto;
+  padding: 20px;
+}
+
+.settings-wrapper a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #333;
+  transition: all 0.25s ease;
+}
+
+.settings-wrapper a:hover {
+  background: var(--dsr-blue-hover);
+  color: #fff;
+}
+
+
+/* =====================================================
+   Open Button
+===================================================== */
+.openbtn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 900;
+
+  background: var(--dsr-blue);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: none;
+}
+
+.openbtn:hover {
+  background: var(--dsr-blue-hover);
+}
+
+.openbtn.show {
+  display: block;
+}
+
+/* =====================================================
+   Main Content
+===================================================== */
+#main {
+  margin-left: 300px;
+  padding: 24px;
+  transition: margin-left 0.4s ease;
+}
+
+.sidebar.closed ~ #main {
+  margin-left: 0;
 }
 
 /* =====================================================
@@ -185,7 +347,7 @@ body {
   gap: 1.5rem;
 }
 
-.welcome-banner{
+.welcome-banner {
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   background: #f8f9fa;
@@ -261,7 +423,7 @@ body {
 .dashboard-content .quick-actions {
   background: #ffffff;
 
- border: 1px solid #e5e5e5;
+  border: 1px solid #e5e5e5;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
 
@@ -289,15 +451,3 @@ body {
     max-width: 180px;
   }
 }
-
-
-
-@media (min-width: 768px) {
-  .offcanvas {
-    position: static !important;
-    transform: none !important;
-    visibility: visible !important;
-  }
-}
-
-
