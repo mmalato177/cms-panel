@@ -19,289 +19,336 @@
 
 </head>
 
-<body>
+<body class="preload">
+    <!-- SIDEBAR -->
+    <div id="sidebar"></div>
 
-    <div class="container-fluid">
-        <div class="row">
+    <!-- MAIN CONTENT -->
+    <main id="main" class="bg-light">
+        <button class="openbtn d-flex" onclick="openNav()">&#9776; Open Sidebar</button>
 
-            <!-- SIDEBAR -->
-            <div id="sidebar"></div>
+        <div class="dashboard-content">
+            <!-- Page Header -->
+            <section class="page-header">
+                <div class="page-header-content">
+                    <div class="page-header-text">
+                        <h2 class="fw-bold">Media Repository</h2>
+                        <p>Central repository for photos and videos. Upload once, use across all websites.</p>
+                    </div>
+                    <button class="btn btn-primary btn-create" data-bs-toggle="modal"
+                        data-bs-target="#uploadMediaModal">
+                        <i class="bi bi-cloud-upload"></i> Upload Media
+                    </button>
+                </div>
+            </section>
 
-            <!-- MAIN CONTENT -->
-            <main id="main" class="col-12 col-md-10 bg-light">
-                <div class="dashboard-content">
-                    <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
-
-                    <!-- Page Header -->
-                    <section class="page-header">
-                        <div class="page-header-content">
-                            <div class="page-header-text">
-                                <h2 class="fw-bold">Media Repository</h2>
-                                <p>Central repository for photos and videos. Upload once, use across all websites.</p>
+            <!-- Stats Cards -->
+            <section class="media-stats">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <div class="stat-card stat-card-blue">
+                            <div class="stat-icon">
+                                <i class="bi bi-images"></i>
                             </div>
-                            <button class="btn btn-primary btn-create" data-bs-toggle="modal" data-bs-target="#uploadMediaModal">
-                                <i class="bi bi-cloud-upload"></i> Upload Media
+                            <div class="stat-info">
+                                <p class="stat-value" id="statImages">0</p>
+                                <p class="stat-label">Total Images</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card stat-card-purple">
+                            <div class="stat-icon">
+                                <i class="bi bi-camera-video"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" id="statVideos">0</p>
+                                <p class="stat-label">Total Videos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card stat-card-green">
+                            <div class="stat-icon">
+                                <i class="bi bi-hdd"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" id="statStorage">0 MB</p>
+                                <p class="stat-label">Storage Used</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card stat-card-orange">
+                            <div class="stat-icon">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" id="statRecent">0</p>
+                                <p class="stat-label">Uploaded This Week</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters -->
+            <section class="media-filters">
+                <div class="filters-row">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">All <span class="badge" id="filterAll">0</span></button>
+                        <button class="filter-tab">Images <span class="badge" id="filterImages">0</span></button>
+                        <button class="filter-tab">Videos <span class="badge" id="filterVideos">0</span></button>
+                    </div>
+                    <div class="filter-actions">
+                        <div class="filter-search">
+                            <i class="bi bi-search"></i>
+                            <input type="text" placeholder="Search media..." id="mediaSearch">
+                        </div>
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid" title="Grid View">
+                                <i class="bi bi-grid-3x3-gap"></i>
+                            </button>
+                            <button class="view-btn" data-view="list" title="List View">
+                                <i class="bi bi-list-ul"></i>
                             </button>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </section>
 
-                    <!-- Stats Cards -->
-                    <section class="media-stats">
-                        <div class="row g-3">
-                            <div class="col-md-3">
-                                <div class="stat-card stat-card-blue">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-images"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value" id="statImages">0</p>
-                                        <p class="stat-label">Total Images</p>
-                                    </div>
-                                </div>
+            <!-- Media Grid -->
+            <section class="media-grid-section">
+                <div class="media-grid" id="mediaGrid">
+                    <!-- Image 1 -->
+                    <div class="media-item" data-type="image" data-id="12454" data-filename="PICT1042.JPG"
+                        data-caption="Kfz-Sachverständigen-Kongress am 03.02.2026 in Würzburg"
+                        data-description="From left to right: Patricio, Katharina, Sebastian" data-copyright="© DSR24"
+                        data-resolution="5152x3864" data-size="4.2 MB" data-date="2026-02-03" data-noindex="false">
+                        <div class="media-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=200&fit=crop"
+                                alt="Conference">
+                            <div class="media-type-badge">
+                                <i class="bi bi-image"></i>
                             </div>
-                            <div class="col-md-3">
-                                <div class="stat-card stat-card-purple">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-camera-video"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value" id="statVideos">0</p>
-                                        <p class="stat-label">Total Videos</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="stat-card stat-card-green">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-hdd"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value" id="statStorage">0 MB</p>
-                                        <p class="stat-label">Storage Used</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="stat-card stat-card-orange">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-clock-history"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value" id="statRecent">0</p>
-                                        <p class="stat-label">Uploaded This Week</p>
-                                    </div>
-                                </div>
+                            <div class="media-overlay">
+                                <button class="overlay-btn btn-preview" title="Preview"><i
+                                        class="bi bi-eye"></i></button>
+                                <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
                             </div>
                         </div>
-                    </section>
-
-                    <!-- Filters -->
-                    <section class="media-filters">
-                        <div class="filters-row">
-                            <div class="filter-tabs">
-                                <button class="filter-tab active">All <span class="badge" id="filterAll">0</span></button>
-                                <button class="filter-tab">Images <span class="badge" id="filterImages">0</span></button>
-                                <button class="filter-tab">Videos <span class="badge" id="filterVideos">0</span></button>
-                            </div>
-                            <div class="filter-actions">
-                                <div class="filter-search">
-                                    <i class="bi bi-search"></i>
-                                    <input type="text" placeholder="Search media..." id="mediaSearch">
-                                </div>
-                                <div class="view-toggle">
-                                    <button class="view-btn active" data-view="grid" title="Grid View">
-                                        <i class="bi bi-grid-3x3-gap"></i>
-                                    </button>
-                                    <button class="view-btn" data-view="list" title="List View">
-                                        <i class="bi bi-list-ul"></i>
-                                    </button>
-                                </div>
+                        <div class="media-info">
+                            <p class="media-caption">Kfz-Sachverständigen-Kongress</p>
+                            <div class="media-meta">
+                                <span class="meta-resolution">5152×3864</span>
+                                <span class="meta-date">Feb 03, 2026</span>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <!-- Media Grid -->
-                    <section class="media-grid-section">
-                        <div class="media-grid" id="mediaGrid">
-                            <!-- Image 1 -->
-                            <div class="media-item" data-type="image" data-id="12454" data-filename="PICT1042.JPG" data-caption="Kfz-Sachverständigen-Kongress am 03.02.2026 in Würzburg" data-description="From left to right: Patricio, Katharina, Sebastian" data-copyright="© DSR24" data-resolution="5152x3864" data-size="4.2 MB" data-date="2026-02-03" data-noindex="false">
-                                <div class="media-thumbnail">
-                                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=200&fit=crop" alt="Conference">
-                                    <div class="media-type-badge">
-                                        <i class="bi bi-image"></i>
-                                    </div>
-                                    <div class="media-overlay">
-                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
-                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="media-info">
-                                    <p class="media-caption">Kfz-Sachverständigen-Kongress</p>
-                                    <div class="media-meta">
-                                        <span class="meta-resolution">5152×3864</span>
-                                        <span class="meta-date">Feb 03, 2026</span>
-                                    </div>
-                                </div>
+                    <!-- Image 2 -->
+                    <div class="media-item" data-type="image" data-id="12455" data-filename="team_photo_2026.jpg"
+                        data-caption="DSR24 Team Meeting January 2026"
+                        data-description="Annual team meeting in the new office" data-copyright=""
+                        data-resolution="4000x3000" data-size="3.1 MB" data-date="2026-01-15" data-noindex="false">
+                        <div class="media-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=300&h=200&fit=crop"
+                                alt="Team">
+                            <div class="media-type-badge">
+                                <i class="bi bi-image"></i>
                             </div>
-
-                            <!-- Image 2 -->
-                            <div class="media-item" data-type="image" data-id="12455" data-filename="team_photo_2026.jpg" data-caption="DSR24 Team Meeting January 2026" data-description="Annual team meeting in the new office" data-copyright="" data-resolution="4000x3000" data-size="3.1 MB" data-date="2026-01-15" data-noindex="false">
-                                <div class="media-thumbnail">
-                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=300&h=200&fit=crop" alt="Team">
-                                    <div class="media-type-badge">
-                                        <i class="bi bi-image"></i>
-                                    </div>
-                                    <div class="media-overlay">
-                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
-                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="media-info">
-                                    <p class="media-caption">DSR24 Team Meeting</p>
-                                    <div class="media-meta">
-                                        <span class="meta-resolution">4000×3000</span>
-                                        <span class="meta-date">Jan 15, 2026</span>
-                                    </div>
-                                </div>
+                            <div class="media-overlay">
+                                <button class="overlay-btn btn-preview" title="Preview"><i
+                                        class="bi bi-eye"></i></button>
+                                <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
                             </div>
-
-                            <!-- Video 1 -->
-                            <div class="media-item" data-type="video" data-id="12456" data-filename="company_intro.mp4" data-caption="DSR24 Company Introduction Video" data-description="Official company introduction for website" data-copyright="© DSR24" data-resolution="1920x1080" data-size="45.8 MB" data-date="2026-01-20" data-noindex="false" data-poster="12454">
-                                <div class="media-thumbnail">
-                                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=300&h=200&fit=crop" alt="Video">
-                                    <div class="media-type-badge badge-video">
-                                        <i class="bi bi-play-fill"></i>
-                                    </div>
-                                    <div class="media-overlay">
-                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
-                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="media-info">
-                                    <p class="media-caption">Company Introduction Video</p>
-                                    <div class="media-meta">
-                                        <span class="meta-resolution">1920×1080</span>
-                                        <span class="meta-date">Jan 20, 2026</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Image 3 -->
-                            <div class="media-item" data-type="image" data-id="12457" data-filename="office_exterior.jpg" data-caption="DSR24 Headquarters Building" data-description="Main office building in Hessisch Oldendorf" data-copyright="" data-resolution="6000x4000" data-size="5.8 MB" data-date="2026-01-10" data-noindex="false">
-                                <div class="media-thumbnail">
-                                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop" alt="Building">
-                                    <div class="media-type-badge">
-                                        <i class="bi bi-image"></i>
-                                    </div>
-                                    <div class="media-overlay">
-                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
-                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="media-info">
-                                    <p class="media-caption">DSR24 Headquarters Building</p>
-                                    <div class="media-meta">
-                                        <span class="meta-resolution">6000×4000</span>
-                                        <span class="meta-date">Jan 10, 2026</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Image 4 -->
-                            <div class="media-item" data-type="image" data-id="12458" data-filename="car_inspection.jpg" data-caption="Vehicle Inspection Process" data-description="Professional vehicle damage assessment" data-copyright="© iStockphoto.com / carexpert" data-resolution="4500x3000" data-size="3.9 MB" data-date="2026-02-01" data-noindex="false">
-                                <div class="media-thumbnail">
-                                    <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=300&h=200&fit=crop" alt="Inspection">
-                                    <div class="media-type-badge">
-                                        <i class="bi bi-image"></i>
-                                    </div>
-                                    <div class="media-overlay">
-                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
-                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="media-info">
-                                    <p class="media-caption">Vehicle Inspection Process</p>
-                                    <div class="media-meta">
-                                        <span class="meta-resolution">4500×3000</span>
-                                        <span class="meta-date">Feb 01, 2026</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Image 5 -->
-                            <div class="media-item" data-type="image" data-id="12459" data-filename="patricio_speech.jpg" data-caption="Patricio giving a speech" data-description="CEO speech at industry conference" data-copyright="© DSR24" data-resolution="3840x2560" data-size="2.8 MB" data-date="2026-02-05" data-noindex="false">
-                                <div class="media-thumbnail">
-                                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=300&h=200&fit=crop" alt="Speech">
-                                    <div class="media-type-badge">
-                                        <i class="bi bi-image"></i>
-                                    </div>
-                                    <div class="media-overlay">
-                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
-                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="media-info">
-                                    <p class="media-caption">Patricio giving a speech</p>
-                                    <div class="media-meta">
-                                        <span class="meta-resolution">3840×2560</span>
-                                        <span class="meta-date">Feb 05, 2026</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Video 2 -->
-                            <div class="media-item" data-type="video" data-id="12460" data-filename="testimonial_mueller.mp4" data-caption="Customer Testimonial - Mueller GmbH" data-description="Video testimonial from satisfied customer" data-copyright="" data-resolution="1920x1080" data-size="28.5 MB" data-date="2026-01-25" data-noindex="false">
-                                <div class="media-thumbnail">
-                                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=300&h=200&fit=crop" alt="Testimonial">
-                                    <div class="media-type-badge badge-video">
-                                        <i class="bi bi-play-fill"></i>
-                                    </div>
-                                    <div class="media-overlay">
-                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
-                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="media-info">
-                                    <p class="media-caption">Customer Testimonial</p>
-                                    <div class="media-meta">
-                                        <span class="meta-resolution">1920×1080</span>
-                                        <span class="meta-date">Jan 25, 2026</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Image 6 -->
-                            <div class="media-item" data-type="image" data-id="12461" data-filename="logo_dsr24.png" data-caption="DSR24 Official Logo" data-description="Official company logo for press and marketing" data-copyright="© DSR24" data-resolution="2000x800" data-size="156 KB" data-date="2025-12-01" data-noindex="true" data-internal="Always ask legal department before using externally">
-                                <div class="media-thumbnail">
-                                    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300&h=200&fit=crop" alt="Logo">
-                                    <div class="media-type-badge">
-                                        <i class="bi bi-image"></i>
-                                    </div>
-                                    <div class="media-overlay">
-                                        <button class="overlay-btn btn-preview" title="Preview"><i class="bi bi-eye"></i></button>
-                                        <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal" data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="media-info">
-                                    <p class="media-caption">DSR24 Official Logo</p>
-                                    <div class="media-meta">
-                                        <span class="meta-resolution">2000×800</span>
-                                        <span class="meta-date">Dec 01, 2025</span>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                    </section>
+                        <div class="media-info">
+                            <p class="media-caption">DSR24 Team Meeting</p>
+                            <div class="media-meta">
+                                <span class="meta-resolution">4000×3000</span>
+                                <span class="meta-date">Jan 15, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 1 -->
+                    <div class="media-item" data-type="video" data-id="12456" data-filename="company_intro.mp4"
+                        data-caption="DSR24 Company Introduction Video"
+                        data-description="Official company introduction for website" data-copyright="© DSR24"
+                        data-resolution="1920x1080" data-size="45.8 MB" data-date="2026-01-20" data-noindex="false"
+                        data-poster="12454">
+                        <div class="media-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=300&h=200&fit=crop"
+                                alt="Video">
+                            <div class="media-type-badge badge-video">
+                                <i class="bi bi-play-fill"></i>
+                            </div>
+                            <div class="media-overlay">
+                                <button class="overlay-btn btn-preview" title="Preview"><i
+                                        class="bi bi-eye"></i></button>
+                                <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <p class="media-caption">Company Introduction Video</p>
+                            <div class="media-meta">
+                                <span class="meta-resolution">1920×1080</span>
+                                <span class="meta-date">Jan 20, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image 3 -->
+                    <div class="media-item" data-type="image" data-id="12457" data-filename="office_exterior.jpg"
+                        data-caption="DSR24 Headquarters Building"
+                        data-description="Main office building in Hessisch Oldendorf" data-copyright=""
+                        data-resolution="6000x4000" data-size="5.8 MB" data-date="2026-01-10" data-noindex="false">
+                        <div class="media-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop"
+                                alt="Building">
+                            <div class="media-type-badge">
+                                <i class="bi bi-image"></i>
+                            </div>
+                            <div class="media-overlay">
+                                <button class="overlay-btn btn-preview" title="Preview"><i
+                                        class="bi bi-eye"></i></button>
+                                <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <p class="media-caption">DSR24 Headquarters Building</p>
+                            <div class="media-meta">
+                                <span class="meta-resolution">6000×4000</span>
+                                <span class="meta-date">Jan 10, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image 4 -->
+                    <div class="media-item" data-type="image" data-id="12458" data-filename="car_inspection.jpg"
+                        data-caption="Vehicle Inspection Process"
+                        data-description="Professional vehicle damage assessment"
+                        data-copyright="© iStockphoto.com / carexpert" data-resolution="4500x3000" data-size="3.9 MB"
+                        data-date="2026-02-01" data-noindex="false">
+                        <div class="media-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=300&h=200&fit=crop"
+                                alt="Inspection">
+                            <div class="media-type-badge">
+                                <i class="bi bi-image"></i>
+                            </div>
+                            <div class="media-overlay">
+                                <button class="overlay-btn btn-preview" title="Preview"><i
+                                        class="bi bi-eye"></i></button>
+                                <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <p class="media-caption">Vehicle Inspection Process</p>
+                            <div class="media-meta">
+                                <span class="meta-resolution">4500×3000</span>
+                                <span class="meta-date">Feb 01, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image 5 -->
+                    <div class="media-item" data-type="image" data-id="12459" data-filename="patricio_speech.jpg"
+                        data-caption="Patricio giving a speech" data-description="CEO speech at industry conference"
+                        data-copyright="© DSR24" data-resolution="3840x2560" data-size="2.8 MB" data-date="2026-02-05"
+                        data-noindex="false">
+                        <div class="media-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=300&h=200&fit=crop"
+                                alt="Speech">
+                            <div class="media-type-badge">
+                                <i class="bi bi-image"></i>
+                            </div>
+                            <div class="media-overlay">
+                                <button class="overlay-btn btn-preview" title="Preview"><i
+                                        class="bi bi-eye"></i></button>
+                                <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <p class="media-caption">Patricio giving a speech</p>
+                            <div class="media-meta">
+                                <span class="meta-resolution">3840×2560</span>
+                                <span class="meta-date">Feb 05, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="media-item" data-type="video" data-id="12460" data-filename="testimonial_mueller.mp4"
+                        data-caption="Customer Testimonial - Mueller GmbH"
+                        data-description="Video testimonial from satisfied customer" data-copyright=""
+                        data-resolution="1920x1080" data-size="28.5 MB" data-date="2026-01-25" data-noindex="false">
+                        <div class="media-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=300&h=200&fit=crop"
+                                alt="Testimonial">
+                            <div class="media-type-badge badge-video">
+                                <i class="bi bi-play-fill"></i>
+                            </div>
+                            <div class="media-overlay">
+                                <button class="overlay-btn btn-preview" title="Preview"><i
+                                        class="bi bi-eye"></i></button>
+                                <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <p class="media-caption">Customer Testimonial</p>
+                            <div class="media-meta">
+                                <span class="meta-resolution">1920×1080</span>
+                                <span class="meta-date">Jan 25, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image 6 -->
+                    <div class="media-item" data-type="image" data-id="12461" data-filename="logo_dsr24.png"
+                        data-caption="DSR24 Official Logo"
+                        data-description="Official company logo for press and marketing" data-copyright="© DSR24"
+                        data-resolution="2000x800" data-size="156 KB" data-date="2025-12-01" data-noindex="true"
+                        data-internal="Always ask legal department before using externally">
+                        <div class="media-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300&h=200&fit=crop"
+                                alt="Logo">
+                            <div class="media-type-badge">
+                                <i class="bi bi-image"></i>
+                            </div>
+                            <div class="media-overlay">
+                                <button class="overlay-btn btn-preview" title="Preview"><i
+                                        class="bi bi-eye"></i></button>
+                                <button class="overlay-btn btn-edit-media" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editMediaModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <p class="media-caption">DSR24 Official Logo</p>
+                            <div class="media-meta">
+                                <span class="meta-resolution">2000×800</span>
+                                <span class="meta-date">Dec 01, 2025</span>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-            </main>
+            </section>
 
         </div>
-    </div>
+    </main>
+
 
     <!-- Upload Media Modal -->
-    <div class="modal fade" id="uploadMediaModal" tabindex="-1" aria-labelledby="uploadMediaModalLabel" aria-hidden="true">
+    <div class="modal fade" id="uploadMediaModal" tabindex="-1" aria-labelledby="uploadMediaModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -338,35 +385,42 @@
                             <!-- Caption DE -->
                             <div class="col-md-6">
                                 <label class="form-label">Caption (German)</label>
-                                <input type="text" class="form-control" id="upload-caption-de" placeholder="Bildunterschrift...">
+                                <input type="text" class="form-control" id="upload-caption-de"
+                                    placeholder="Bildunterschrift...">
                             </div>
                             <!-- Caption EN -->
                             <div class="col-md-6">
                                 <label class="form-label">Caption (English)</label>
-                                <input type="text" class="form-control" id="upload-caption-en" placeholder="Image caption...">
+                                <input type="text" class="form-control" id="upload-caption-en"
+                                    placeholder="Image caption...">
                             </div>
 
                             <!-- Description DE -->
                             <div class="col-md-6">
                                 <label class="form-label">Description (German)</label>
-                                <textarea class="form-control" rows="2" id="upload-desc-de" placeholder="Optionale Beschreibung..."></textarea>
+                                <textarea class="form-control" rows="2" id="upload-desc-de"
+                                    placeholder="Optionale Beschreibung..."></textarea>
                             </div>
                             <!-- Description EN -->
                             <div class="col-md-6">
                                 <label class="form-label">Description (English)</label>
-                                <textarea class="form-control" rows="2" id="upload-desc-en" placeholder="Optional description..."></textarea>
+                                <textarea class="form-control" rows="2" id="upload-desc-en"
+                                    placeholder="Optional description..."></textarea>
                             </div>
 
                             <!-- Copyright -->
                             <div class="col-md-6">
                                 <label class="form-label">Copyright / Source</label>
-                                <input type="text" class="form-control" id="upload-copyright" placeholder="© iStockphoto.com / userXY">
+                                <input type="text" class="form-control" id="upload-copyright"
+                                    placeholder="© iStockphoto.com / userXY">
                             </div>
 
                             <!-- Internal Comments -->
                             <div class="col-md-6">
-                                <label class="form-label">Internal Comments <span class="text-muted">(CMS only)</span></label>
-                                <input type="text" class="form-control" id="upload-internal" placeholder="Internal notes...">
+                                <label class="form-label">Internal Comments <span class="text-muted">(CMS
+                                        only)</span></label>
+                                <input type="text" class="form-control" id="upload-internal"
+                                    placeholder="Internal notes...">
                             </div>
 
                             <!-- noindex -->
@@ -409,12 +463,12 @@
                             <div class="edit-file-info">
                                 <p class="edit-filename" id="editFilename"></p>
                                 <p class="edit-meta">
-                                    <span id="editResolution"></span> • 
-                                    <span id="editSize"></span> • 
+                                    <span id="editResolution"></span> •
+                                    <span id="editSize"></span> •
                                     <span id="editFormat"></span>
                                 </p>
                                 <p class="edit-meta text-muted">
-                                    Uploaded: <span id="editDate"></span> • 
+                                    Uploaded: <span id="editDate"></span> •
                                     ID: <span id="editId"></span>
                                 </p>
                                 <p class="edit-seo-url" id="editSeoUrl"></p>
@@ -454,7 +508,8 @@
 
                             <!-- Internal Comments -->
                             <div class="col-md-6">
-                                <label class="form-label">Internal Comments <span class="text-muted">(CMS only)</span></label>
+                                <label class="form-label">Internal Comments <span class="text-muted">(CMS
+                                        only)</span></label>
                                 <input type="text" class="form-control" id="edit-internal">
                             </div>
 
@@ -465,7 +520,8 @@
                                     <button type="button" class="btn btn-outline-secondary">
                                         <i class="bi bi-image"></i> Select Poster Image
                                     </button>
-                                    <span class="poster-hint">Choose an image from the repository as video thumbnail</span>
+                                    <span class="poster-hint">Choose an image from the repository as video
+                                        thumbnail</span>
                                 </div>
                             </div>
 
@@ -526,7 +582,8 @@
                     <p>Are you sure you want to permanently delete this media file?</p>
                     <p class="mb-0"><strong id="delete-media-caption"></strong></p>
                     <p class="text-danger small mt-2">
-                        <i class="bi bi-exclamation-circle"></i> This action cannot be undone. The file will be removed from all websites where it's used.
+                        <i class="bi bi-exclamation-circle"></i> This action cannot be undone. The file will be removed
+                        from all websites where it's used.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -558,7 +615,7 @@
         let currentDeleteItem = null;
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initDropZone();
             initMediaItems();
             initFilters();
@@ -572,7 +629,7 @@
             const fileInput = document.getElementById('fileInput');
 
             dropZone.addEventListener('click', () => fileInput.click());
-            
+
             dropZone.addEventListener('dragover', (e) => {
                 e.preventDefault();
                 dropZone.classList.add('dragover');
@@ -595,7 +652,7 @@
 
         function handleFiles(files) {
             if (files.length === 0) return;
-            
+
             const file = files[0];
             const preview = document.getElementById('uploadPreview');
             const previewImg = document.getElementById('previewImage');
@@ -628,7 +685,7 @@
         function initMediaItems() {
             // Edit buttons
             document.querySelectorAll('.btn-edit-media').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.stopPropagation();
                     const item = this.closest('.media-item');
                     currentEditItem = item;
@@ -638,7 +695,7 @@
 
             // Preview buttons
             document.querySelectorAll('.btn-preview').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.stopPropagation();
                     const item = this.closest('.media-item');
                     openPreview(item);
@@ -647,7 +704,7 @@
 
             // Click on thumbnail for preview
             document.querySelectorAll('.media-thumbnail').forEach(thumb => {
-                thumb.addEventListener('click', function() {
+                thumb.addEventListener('click', function () {
                     const item = this.closest('.media-item');
                     if (item.dataset.type === 'image') {
                         openPreview(item);
@@ -665,7 +722,7 @@
             document.getElementById('editFormat').textContent = item.dataset.filename.split('.').pop().toUpperCase();
             document.getElementById('editDate').textContent = item.dataset.date;
             document.getElementById('editId').textContent = item.dataset.id;
-            
+
             // SEO URL
             const caption = item.dataset.caption.toLowerCase()
                 .replace(/[^a-z0-9\s]/g, '')
@@ -689,7 +746,7 @@
             document.getElementById('fullPreviewImage').src = img.src.replace('w=300&h=200', 'w=1200');
             document.getElementById('previewCaption').textContent = item.dataset.caption;
             document.getElementById('previewResolution').textContent = item.dataset.resolution;
-            
+
             const modal = new bootstrap.Modal(document.getElementById('previewModal'));
             modal.show();
         }
@@ -697,10 +754,10 @@
         // Filter functionality
         function initFilters() {
             document.querySelectorAll('.filter-tab').forEach(tab => {
-                tab.addEventListener('click', function() {
+                tab.addEventListener('click', function () {
                     document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     const filter = this.textContent.trim().toLowerCase();
                     document.querySelectorAll('.media-item').forEach(item => {
                         if (filter.startsWith('all')) {
@@ -715,7 +772,7 @@
             });
 
             // Search
-            document.getElementById('mediaSearch').addEventListener('input', function() {
+            document.getElementById('mediaSearch').addEventListener('input', function () {
                 const search = this.value.toLowerCase();
                 document.querySelectorAll('.media-item').forEach(item => {
                     const text = (item.dataset.caption + ' ' + item.dataset.filename + ' ' + item.dataset.description).toLowerCase();
@@ -727,10 +784,10 @@
         // View toggle
         function initViewToggle() {
             document.querySelectorAll('.view-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     const grid = document.getElementById('mediaGrid');
                     if (this.dataset.view === 'list') {
                         grid.classList.add('list-view');
@@ -763,7 +820,7 @@
         function deleteMedia() {
             currentDeleteItem = currentEditItem;
             document.getElementById('delete-media-caption').textContent = currentEditItem.dataset.caption;
-            
+
             bootstrap.Modal.getInstance(document.getElementById('editMediaModal')).hide();
             const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
             deleteModal.show();
@@ -771,11 +828,11 @@
 
         function confirmDelete() {
             if (!currentDeleteItem) return;
-            
+
             currentDeleteItem.style.transition = 'opacity 0.3s, transform 0.3s';
             currentDeleteItem.style.opacity = '0';
             currentDeleteItem.style.transform = 'scale(0.8)';
-            
+
             setTimeout(() => {
                 currentDeleteItem.remove();
                 updateStats();
@@ -795,12 +852,12 @@
 
             // Simulate upload (would be API call in real implementation)
             bootstrap.Modal.getInstance(document.getElementById('uploadMediaModal')).hide();
-            
+
             // Reset form
             preview.style.display = 'none';
             document.getElementById('dropZone').style.display = '';
             document.getElementById('uploadMediaForm').reset();
-            
+
             showToast('Media file uploaded successfully! AVIF versions are being generated.');
             updateStats();
         }
@@ -811,7 +868,7 @@
             const images = document.querySelectorAll('.media-item[data-type="image"]').length;
             const videos = document.querySelectorAll('.media-item[data-type="video"]').length;
             const total = images + videos;
-            
+
             // Calculate total storage from data-size attributes
             let totalBytes = 0;
             allItems.forEach(item => {
@@ -825,7 +882,7 @@
                     totalBytes += size * 1024;
                 }
             });
-            
+
             // Format storage
             let storageStr;
             if (totalBytes >= 1024 * 1024 * 1024) {
@@ -833,7 +890,7 @@
             } else {
                 storageStr = (totalBytes / (1024 * 1024)).toFixed(1) + ' MB';
             }
-            
+
             // Calculate uploads this week (items with date in last 7 days)
             const now = new Date();
             const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -847,13 +904,13 @@
                     }
                 }
             });
-            
+
             // Update stats cards
             document.getElementById('statImages').textContent = images;
             document.getElementById('statVideos').textContent = videos;
             document.getElementById('statStorage').textContent = storageStr;
             document.getElementById('statRecent').textContent = recentCount;
-            
+
             // Update filter badges
             document.getElementById('filterAll').textContent = total;
             document.getElementById('filterImages').textContent = images;

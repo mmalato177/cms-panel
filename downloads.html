@@ -19,282 +19,316 @@
 
 </head>
 
-<body>
+<body class="preload">
 
-    <div class="container-fluid">
-        <div class="row">
+    <!-- SIDEBAR -->
+    <div id="sidebar"></div>
 
-            <!-- SIDEBAR -->
-            <div id="sidebar"></div>
+    <!-- MAIN CONTENT -->
+    <main id="main" class="bg-light">
+        <button class="openbtn d-flex" onclick="openNav()">&#9776; Open Sidebar</button>
 
-            <!-- MAIN CONTENT -->
-            <main id="main" class="col-12 col-md-10 bg-light">
-                <div class="dashboard-content">
-                    <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+        <div class="dashboard-content">
 
-                    <!-- Page Header -->
-                    <section class="page-header">
-                        <div class="page-header-content">
-                            <div class="page-header-text">
-                                <h2 class="fw-bold">Downloads Repository</h2>
-                                <p>Manage downloadable files like PDFs, brochures, and documents across all websites.</p>
+            <!-- Page Header -->
+            <section class="page-header">
+                <div class="page-header-content">
+                    <div class="page-header-text">
+                        <h2 class="fw-bold">Downloads Repository</h2>
+                        <p>Manage downloadable files like PDFs, brochures, and documents across all websites.</p>
+                    </div>
+                    <button class="btn btn-primary btn-create" data-bs-toggle="modal"
+                        data-bs-target="#uploadDownloadModal">
+                        <i class="bi bi-cloud-upload"></i> Upload File
+                    </button>
+                </div>
+            </section>
+
+            <!-- Stats Cards -->
+            <section class="downloads-stats">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <div class="stat-card stat-card-blue">
+                            <div class="stat-icon">
+                                <i class="bi bi-folder"></i>
                             </div>
-                            <button class="btn btn-primary btn-create" data-bs-toggle="modal" data-bs-target="#uploadDownloadModal">
-                                <i class="bi bi-cloud-upload"></i> Upload File
+                            <div class="stat-info">
+                                <p class="stat-value" id="statTotalFiles">0</p>
+                                <p class="stat-label">Total Files</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card stat-card-red">
+                            <div class="stat-icon">
+                                <i class="bi bi-file-earmark-pdf"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" id="statPdfs">0</p>
+                                <p class="stat-label">PDF Documents</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card stat-card-green">
+                            <div class="stat-icon">
+                                <i class="bi bi-hdd"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" id="statStorage">0 MB</p>
+                                <p class="stat-label">Storage Used</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card stat-card-orange">
+                            <div class="stat-icon">
+                                <i class="bi bi-download"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value" id="statDownloads">0</p>
+                                <p class="stat-label">Downloads This Month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters -->
+            <section class="downloads-filters">
+                <div class="filters-row">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">All <span class="badge" id="filterAll">0</span></button>
+                        <button class="filter-tab">PDFs <span class="badge" id="filterPdfs">0</span></button>
+                        <button class="filter-tab">Documents <span class="badge" id="filterDocs">0</span></button>
+                        <button class="filter-tab">Spreadsheets <span class="badge" id="filterSheets">0</span></button>
+                    </div>
+                    <div class="filter-actions">
+                        <div class="filter-search">
+                            <i class="bi bi-search"></i>
+                            <input type="text" placeholder="Search downloads..." id="downloadSearch">
+                        </div>
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid" title="Grid View">
+                                <i class="bi bi-grid-3x3-gap"></i>
+                            </button>
+                            <button class="view-btn" data-view="list" title="List View">
+                                <i class="bi bi-list-ul"></i>
                             </button>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </section>
 
-                    <!-- Stats Cards -->
-                    <section class="downloads-stats">
-                        <div class="row g-3">
-                            <div class="col-md-3">
-                                <div class="stat-card stat-card-blue">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-folder"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value" id="statTotalFiles">0</p>
-                                        <p class="stat-label">Total Files</p>
-                                    </div>
-                                </div>
+            <!-- Downloads Grid -->
+            <section class="downloads-grid-section">
+                <div class="downloads-grid" id="downloadsGrid">
+                    <!-- PDF 1 -->
+                    <div class="download-item" data-type="pdf" data-id="5001"
+                        data-filename="DSR24_Company_Brochure_2026.pdf" data-title="DSR24 Company Brochure 2026"
+                        data-description="Official company brochure with services overview" data-size="2.4 MB"
+                        data-date="2026-01-15" data-downloads="156" data-category="Marketing">
+                        <div class="download-thumbnail">
+                            <div class="file-icon file-icon-pdf">
+                                <i class="bi bi-file-earmark-pdf-fill"></i>
                             </div>
-                            <div class="col-md-3">
-                                <div class="stat-card stat-card-red">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-file-earmark-pdf"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value" id="statPdfs">0</p>
-                                        <p class="stat-label">PDF Documents</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="stat-card stat-card-green">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-hdd"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value" id="statStorage">0 MB</p>
-                                        <p class="stat-label">Storage Used</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="stat-card stat-card-orange">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-download"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value" id="statDownloads">0</p>
-                                        <p class="stat-label">Downloads This Month</p>
-                                    </div>
-                                </div>
+                            <div class="download-overlay">
+                                <button class="overlay-btn btn-download-file" title="Download"><i
+                                        class="bi bi-download"></i></button>
+                                <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
                             </div>
                         </div>
-                    </section>
-
-                    <!-- Filters -->
-                    <section class="downloads-filters">
-                        <div class="filters-row">
-                            <div class="filter-tabs">
-                                <button class="filter-tab active">All <span class="badge" id="filterAll">0</span></button>
-                                <button class="filter-tab">PDFs <span class="badge" id="filterPdfs">0</span></button>
-                                <button class="filter-tab">Documents <span class="badge" id="filterDocs">0</span></button>
-                                <button class="filter-tab">Spreadsheets <span class="badge" id="filterSheets">0</span></button>
-                            </div>
-                            <div class="filter-actions">
-                                <div class="filter-search">
-                                    <i class="bi bi-search"></i>
-                                    <input type="text" placeholder="Search downloads..." id="downloadSearch">
-                                </div>
-                                <div class="view-toggle">
-                                    <button class="view-btn active" data-view="grid" title="Grid View">
-                                        <i class="bi bi-grid-3x3-gap"></i>
-                                    </button>
-                                    <button class="view-btn" data-view="list" title="List View">
-                                        <i class="bi bi-list-ul"></i>
-                                    </button>
-                                </div>
+                        <div class="download-info">
+                            <p class="download-title">DSR24 Company Brochure 2026</p>
+                            <div class="download-meta">
+                                <span class="meta-size">2.4 MB</span>
+                                <span class="meta-downloads"><i class="bi bi-download"></i> 156</span>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <!-- Downloads Grid -->
-                    <section class="downloads-grid-section">
-                        <div class="downloads-grid" id="downloadsGrid">
-                            <!-- PDF 1 -->
-                            <div class="download-item" data-type="pdf" data-id="5001" data-filename="DSR24_Company_Brochure_2026.pdf" data-title="DSR24 Company Brochure 2026" data-description="Official company brochure with services overview" data-size="2.4 MB" data-date="2026-01-15" data-downloads="156" data-category="Marketing">
-                                <div class="download-thumbnail">
-                                    <div class="file-icon file-icon-pdf">
-                                        <i class="bi bi-file-earmark-pdf-fill"></i>
-                                    </div>
-                                    <div class="download-overlay">
-                                        <button class="overlay-btn btn-download-file" title="Download"><i class="bi bi-download"></i></button>
-                                        <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal" data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="download-info">
-                                    <p class="download-title">DSR24 Company Brochure 2026</p>
-                                    <div class="download-meta">
-                                        <span class="meta-size">2.4 MB</span>
-                                        <span class="meta-downloads"><i class="bi bi-download"></i> 156</span>
-                                    </div>
-                                </div>
+                    <!-- PDF 2 -->
+                    <div class="download-item" data-type="pdf" data-id="5002"
+                        data-filename="Kfz_Gutachten_Leitfaden.pdf" data-title="Kfz-Gutachten Leitfaden"
+                        data-description="Comprehensive guide for vehicle damage assessment" data-size="1.8 MB"
+                        data-date="2026-02-01" data-downloads="89" data-category="Guides">
+                        <div class="download-thumbnail">
+                            <div class="file-icon file-icon-pdf">
+                                <i class="bi bi-file-earmark-pdf-fill"></i>
                             </div>
-
-                            <!-- PDF 2 -->
-                            <div class="download-item" data-type="pdf" data-id="5002" data-filename="Kfz_Gutachten_Leitfaden.pdf" data-title="Kfz-Gutachten Leitfaden" data-description="Comprehensive guide for vehicle damage assessment" data-size="1.8 MB" data-date="2026-02-01" data-downloads="89" data-category="Guides">
-                                <div class="download-thumbnail">
-                                    <div class="file-icon file-icon-pdf">
-                                        <i class="bi bi-file-earmark-pdf-fill"></i>
-                                    </div>
-                                    <div class="download-overlay">
-                                        <button class="overlay-btn btn-download-file" title="Download"><i class="bi bi-download"></i></button>
-                                        <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal" data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="download-info">
-                                    <p class="download-title">Kfz-Gutachten Leitfaden</p>
-                                    <div class="download-meta">
-                                        <span class="meta-size">1.8 MB</span>
-                                        <span class="meta-downloads"><i class="bi bi-download"></i> 89</span>
-                                    </div>
-                                </div>
+                            <div class="download-overlay">
+                                <button class="overlay-btn btn-download-file" title="Download"><i
+                                        class="bi bi-download"></i></button>
+                                <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
                             </div>
-
-                            <!-- Word Document -->
-                            <div class="download-item" data-type="doc" data-id="5003" data-filename="Schadensmeldung_Formular.docx" data-title="Schadensmeldung Formular" data-description="Fillable damage report form template" data-size="245 KB" data-date="2026-01-20" data-downloads="234" data-category="Forms">
-                                <div class="download-thumbnail">
-                                    <div class="file-icon file-icon-doc">
-                                        <i class="bi bi-file-earmark-word-fill"></i>
-                                    </div>
-                                    <div class="download-overlay">
-                                        <button class="overlay-btn btn-download-file" title="Download"><i class="bi bi-download"></i></button>
-                                        <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal" data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="download-info">
-                                    <p class="download-title">Schadensmeldung Formular</p>
-                                    <div class="download-meta">
-                                        <span class="meta-size">245 KB</span>
-                                        <span class="meta-downloads"><i class="bi bi-download"></i> 234</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Excel Spreadsheet -->
-                            <div class="download-item" data-type="xls" data-id="5004" data-filename="Reparaturkosten_Kalkulator.xlsx" data-title="Reparaturkosten Kalkulator" data-description="Excel calculator for repair cost estimation" data-size="156 KB" data-date="2026-02-05" data-downloads="67" data-category="Tools">
-                                <div class="download-thumbnail">
-                                    <div class="file-icon file-icon-xls">
-                                        <i class="bi bi-file-earmark-excel-fill"></i>
-                                    </div>
-                                    <div class="download-overlay">
-                                        <button class="overlay-btn btn-download-file" title="Download"><i class="bi bi-download"></i></button>
-                                        <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal" data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="download-info">
-                                    <p class="download-title">Reparaturkosten Kalkulator</p>
-                                    <div class="download-meta">
-                                        <span class="meta-size">156 KB</span>
-                                        <span class="meta-downloads"><i class="bi bi-download"></i> 67</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- PDF 3 -->
-                            <div class="download-item" data-type="pdf" data-id="5005" data-filename="AGB_DSR24_2026.pdf" data-title="AGB DSR24 2026" data-description="Terms and conditions for DSR24 services" data-size="520 KB" data-date="2026-01-01" data-downloads="45" data-category="Legal">
-                                <div class="download-thumbnail">
-                                    <div class="file-icon file-icon-pdf">
-                                        <i class="bi bi-file-earmark-pdf-fill"></i>
-                                    </div>
-                                    <div class="download-overlay">
-                                        <button class="overlay-btn btn-download-file" title="Download"><i class="bi bi-download"></i></button>
-                                        <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal" data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="download-info">
-                                    <p class="download-title">AGB DSR24 2026</p>
-                                    <div class="download-meta">
-                                        <span class="meta-size">520 KB</span>
-                                        <span class="meta-downloads"><i class="bi bi-download"></i> 45</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- PDF 4 -->
-                            <div class="download-item" data-type="pdf" data-id="5006" data-filename="Datenschutzerklaerung.pdf" data-title="Datenschutzerklärung" data-description="Privacy policy document" data-size="380 KB" data-date="2026-01-01" data-downloads="112" data-category="Legal">
-                                <div class="download-thumbnail">
-                                    <div class="file-icon file-icon-pdf">
-                                        <i class="bi bi-file-earmark-pdf-fill"></i>
-                                    </div>
-                                    <div class="download-overlay">
-                                        <button class="overlay-btn btn-download-file" title="Download"><i class="bi bi-download"></i></button>
-                                        <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal" data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="download-info">
-                                    <p class="download-title">Datenschutzerklärung</p>
-                                    <div class="download-meta">
-                                        <span class="meta-size">380 KB</span>
-                                        <span class="meta-downloads"><i class="bi bi-download"></i> 112</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Word Document 2 -->
-                            <div class="download-item" data-type="doc" data-id="5007" data-filename="Bewerbung_Vorlage.docx" data-title="Bewerbung Vorlage" data-description="Job application template" data-size="185 KB" data-date="2026-01-25" data-downloads="78" data-category="HR">
-                                <div class="download-thumbnail">
-                                    <div class="file-icon file-icon-doc">
-                                        <i class="bi bi-file-earmark-word-fill"></i>
-                                    </div>
-                                    <div class="download-overlay">
-                                        <button class="overlay-btn btn-download-file" title="Download"><i class="bi bi-download"></i></button>
-                                        <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal" data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="download-info">
-                                    <p class="download-title">Bewerbung Vorlage</p>
-                                    <div class="download-meta">
-                                        <span class="meta-size">185 KB</span>
-                                        <span class="meta-downloads"><i class="bi bi-download"></i> 78</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- PDF 5 -->
-                            <div class="download-item" data-type="pdf" data-id="5008" data-filename="Preisliste_Sachverstaendiger_2026.pdf" data-title="Preisliste Sachverständiger 2026" data-description="Price list for expert services" data-size="890 KB" data-date="2026-02-08" data-downloads="203" data-category="Pricing">
-                                <div class="download-thumbnail">
-                                    <div class="file-icon file-icon-pdf">
-                                        <i class="bi bi-file-earmark-pdf-fill"></i>
-                                    </div>
-                                    <div class="download-overlay">
-                                        <button class="overlay-btn btn-download-file" title="Download"><i class="bi bi-download"></i></button>
-                                        <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal" data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
-                                    </div>
-                                </div>
-                                <div class="download-info">
-                                    <p class="download-title">Preisliste Sachverständiger 2026</p>
-                                    <div class="download-meta">
-                                        <span class="meta-size">890 KB</span>
-                                        <span class="meta-downloads"><i class="bi bi-download"></i> 203</span>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                    </section>
+                        <div class="download-info">
+                            <p class="download-title">Kfz-Gutachten Leitfaden</p>
+                            <div class="download-meta">
+                                <span class="meta-size">1.8 MB</span>
+                                <span class="meta-downloads"><i class="bi bi-download"></i> 89</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Word Document -->
+                    <div class="download-item" data-type="doc" data-id="5003"
+                        data-filename="Schadensmeldung_Formular.docx" data-title="Schadensmeldung Formular"
+                        data-description="Fillable damage report form template" data-size="245 KB"
+                        data-date="2026-01-20" data-downloads="234" data-category="Forms">
+                        <div class="download-thumbnail">
+                            <div class="file-icon file-icon-doc">
+                                <i class="bi bi-file-earmark-word-fill"></i>
+                            </div>
+                            <div class="download-overlay">
+                                <button class="overlay-btn btn-download-file" title="Download"><i
+                                        class="bi bi-download"></i></button>
+                                <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="download-info">
+                            <p class="download-title">Schadensmeldung Formular</p>
+                            <div class="download-meta">
+                                <span class="meta-size">245 KB</span>
+                                <span class="meta-downloads"><i class="bi bi-download"></i> 234</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Excel Spreadsheet -->
+                    <div class="download-item" data-type="xls" data-id="5004"
+                        data-filename="Reparaturkosten_Kalkulator.xlsx" data-title="Reparaturkosten Kalkulator"
+                        data-description="Excel calculator for repair cost estimation" data-size="156 KB"
+                        data-date="2026-02-05" data-downloads="67" data-category="Tools">
+                        <div class="download-thumbnail">
+                            <div class="file-icon file-icon-xls">
+                                <i class="bi bi-file-earmark-excel-fill"></i>
+                            </div>
+                            <div class="download-overlay">
+                                <button class="overlay-btn btn-download-file" title="Download"><i
+                                        class="bi bi-download"></i></button>
+                                <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="download-info">
+                            <p class="download-title">Reparaturkosten Kalkulator</p>
+                            <div class="download-meta">
+                                <span class="meta-size">156 KB</span>
+                                <span class="meta-downloads"><i class="bi bi-download"></i> 67</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PDF 3 -->
+                    <div class="download-item" data-type="pdf" data-id="5005" data-filename="AGB_DSR24_2026.pdf"
+                        data-title="AGB DSR24 2026" data-description="Terms and conditions for DSR24 services"
+                        data-size="520 KB" data-date="2026-01-01" data-downloads="45" data-category="Legal">
+                        <div class="download-thumbnail">
+                            <div class="file-icon file-icon-pdf">
+                                <i class="bi bi-file-earmark-pdf-fill"></i>
+                            </div>
+                            <div class="download-overlay">
+                                <button class="overlay-btn btn-download-file" title="Download"><i
+                                        class="bi bi-download"></i></button>
+                                <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="download-info">
+                            <p class="download-title">AGB DSR24 2026</p>
+                            <div class="download-meta">
+                                <span class="meta-size">520 KB</span>
+                                <span class="meta-downloads"><i class="bi bi-download"></i> 45</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PDF 4 -->
+                    <div class="download-item" data-type="pdf" data-id="5006" data-filename="Datenschutzerklaerung.pdf"
+                        data-title="Datenschutzerklärung" data-description="Privacy policy document" data-size="380 KB"
+                        data-date="2026-01-01" data-downloads="112" data-category="Legal">
+                        <div class="download-thumbnail">
+                            <div class="file-icon file-icon-pdf">
+                                <i class="bi bi-file-earmark-pdf-fill"></i>
+                            </div>
+                            <div class="download-overlay">
+                                <button class="overlay-btn btn-download-file" title="Download"><i
+                                        class="bi bi-download"></i></button>
+                                <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="download-info">
+                            <p class="download-title">Datenschutzerklärung</p>
+                            <div class="download-meta">
+                                <span class="meta-size">380 KB</span>
+                                <span class="meta-downloads"><i class="bi bi-download"></i> 112</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Word Document 2 -->
+                    <div class="download-item" data-type="doc" data-id="5007" data-filename="Bewerbung_Vorlage.docx"
+                        data-title="Bewerbung Vorlage" data-description="Job application template" data-size="185 KB"
+                        data-date="2026-01-25" data-downloads="78" data-category="HR">
+                        <div class="download-thumbnail">
+                            <div class="file-icon file-icon-doc">
+                                <i class="bi bi-file-earmark-word-fill"></i>
+                            </div>
+                            <div class="download-overlay">
+                                <button class="overlay-btn btn-download-file" title="Download"><i
+                                        class="bi bi-download"></i></button>
+                                <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="download-info">
+                            <p class="download-title">Bewerbung Vorlage</p>
+                            <div class="download-meta">
+                                <span class="meta-size">185 KB</span>
+                                <span class="meta-downloads"><i class="bi bi-download"></i> 78</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PDF 5 -->
+                    <div class="download-item" data-type="pdf" data-id="5008"
+                        data-filename="Preisliste_Sachverstaendiger_2026.pdf"
+                        data-title="Preisliste Sachverständiger 2026" data-description="Price list for expert services"
+                        data-size="890 KB" data-date="2026-02-08" data-downloads="203" data-category="Pricing">
+                        <div class="download-thumbnail">
+                            <div class="file-icon file-icon-pdf">
+                                <i class="bi bi-file-earmark-pdf-fill"></i>
+                            </div>
+                            <div class="download-overlay">
+                                <button class="overlay-btn btn-download-file" title="Download"><i
+                                        class="bi bi-download"></i></button>
+                                <button class="overlay-btn btn-edit-download" title="Edit" data-bs-toggle="modal"
+                                    data-bs-target="#editDownloadModal"><i class="bi bi-pencil"></i></button>
+                            </div>
+                        </div>
+                        <div class="download-info">
+                            <p class="download-title">Preisliste Sachverständiger 2026</p>
+                            <div class="download-meta">
+                                <span class="meta-size">890 KB</span>
+                                <span class="meta-downloads"><i class="bi bi-download"></i> 203</span>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-            </main>
+            </section>
 
         </div>
-    </div>
+    </main>
 
     <!-- Upload Download Modal -->
-    <div class="modal fade" id="uploadDownloadModal" tabindex="-1" aria-labelledby="uploadDownloadModalLabel" aria-hidden="true">
+    <div class="modal fade" id="uploadDownloadModal" tabindex="-1" aria-labelledby="uploadDownloadModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -323,7 +357,8 @@
                                     <p class="preview-filename" id="previewFilename"></p>
                                     <p class="preview-size" id="previewSize"></p>
                                 </div>
-                                <button type="button" class="btn-remove-preview" onclick="removeUploadPreview()"><i class="bi bi-x-lg"></i></button>
+                                <button type="button" class="btn-remove-preview" onclick="removeUploadPreview()"><i
+                                        class="bi bi-x-lg"></i></button>
                             </div>
                         </div>
 
@@ -333,23 +368,27 @@
                             <!-- Title DE -->
                             <div class="col-md-6">
                                 <label class="form-label">Title (German)</label>
-                                <input type="text" class="form-control" id="upload-title-de" placeholder="Titel des Dokuments...">
+                                <input type="text" class="form-control" id="upload-title-de"
+                                    placeholder="Titel des Dokuments...">
                             </div>
                             <!-- Title EN -->
                             <div class="col-md-6">
                                 <label class="form-label">Title (English)</label>
-                                <input type="text" class="form-control" id="upload-title-en" placeholder="Document title...">
+                                <input type="text" class="form-control" id="upload-title-en"
+                                    placeholder="Document title...">
                             </div>
 
                             <!-- Description DE -->
                             <div class="col-md-6">
                                 <label class="form-label">Description (German)</label>
-                                <textarea class="form-control" rows="2" id="upload-desc-de" placeholder="Optionale Beschreibung..."></textarea>
+                                <textarea class="form-control" rows="2" id="upload-desc-de"
+                                    placeholder="Optionale Beschreibung..."></textarea>
                             </div>
                             <!-- Description EN -->
                             <div class="col-md-6">
                                 <label class="form-label">Description (English)</label>
-                                <textarea class="form-control" rows="2" id="upload-desc-en" placeholder="Optional description..."></textarea>
+                                <textarea class="form-control" rows="2" id="upload-desc-en"
+                                    placeholder="Optional description..."></textarea>
                             </div>
 
                             <!-- Category -->
@@ -370,8 +409,10 @@
 
                             <!-- Internal Comments -->
                             <div class="col-md-6">
-                                <label class="form-label">Internal Notes <span class="text-muted">(CMS only)</span></label>
-                                <input type="text" class="form-control" id="upload-internal" placeholder="Internal notes...">
+                                <label class="form-label">Internal Notes <span class="text-muted">(CMS
+                                        only)</span></label>
+                                <input type="text" class="form-control" id="upload-internal"
+                                    placeholder="Internal notes...">
                             </div>
 
                             <!-- Publish On Sites -->
@@ -388,7 +429,8 @@
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="upload-site-dsgutachten">
-                                        <label class="form-check-label" for="upload-site-dsgutachten">dsgutachten.de</label>
+                                        <label class="form-check-label"
+                                            for="upload-site-dsgutachten">dsgutachten.de</label>
                                     </div>
                                 </div>
                             </div>
@@ -416,7 +458,8 @@
     </div>
 
     <!-- Edit Download Modal -->
-    <div class="modal fade" id="editDownloadModal" tabindex="-1" aria-labelledby="editDownloadModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editDownloadModal" tabindex="-1" aria-labelledby="editDownloadModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -435,12 +478,12 @@
                             <div class="edit-file-details">
                                 <p class="edit-filename" id="editFilename"></p>
                                 <p class="edit-meta">
-                                    <span id="editSize"></span> • 
-                                    <span id="editType"></span> • 
+                                    <span id="editSize"></span> •
+                                    <span id="editType"></span> •
                                     <span id="editDownloadCount"></span> downloads
                                 </p>
                                 <p class="edit-meta text-muted">
-                                    Uploaded: <span id="editDate"></span> • 
+                                    Uploaded: <span id="editDate"></span> •
                                     ID: <span id="editId"></span>
                                 </p>
                                 <p class="edit-seo-url" id="editSeoUrl"></p>
@@ -490,7 +533,8 @@
 
                             <!-- Internal Notes -->
                             <div class="col-md-6">
-                                <label class="form-label">Internal Notes <span class="text-muted">(CMS only)</span></label>
+                                <label class="form-label">Internal Notes <span class="text-muted">(CMS
+                                        only)</span></label>
                                 <input type="text" class="form-control" id="edit-internal">
                             </div>
 
@@ -508,7 +552,8 @@
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="edit-site-dsgutachten">
-                                        <label class="form-check-label" for="edit-site-dsgutachten">dsgutachten.de</label>
+                                        <label class="form-check-label"
+                                            for="edit-site-dsgutachten">dsgutachten.de</label>
                                     </div>
                                 </div>
                             </div>
@@ -517,11 +562,13 @@
                             <div class="col-12">
                                 <label class="form-label">Replace File</label>
                                 <div class="replace-file-area">
-                                    <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('replaceFileInput').click()">
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        onclick="document.getElementById('replaceFileInput').click()">
                                         <i class="bi bi-arrow-repeat"></i> Upload New Version
                                     </button>
                                     <span class="replace-hint">Upload a new file to replace the current one</span>
-                                    <input type="file" id="replaceFileInput" accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,.zip" hidden>
+                                    <input type="file" id="replaceFileInput"
+                                        accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,.zip" hidden>
                                 </div>
                             </div>
 
@@ -564,7 +611,8 @@
                     <p>Are you sure you want to permanently delete this file?</p>
                     <p class="mb-0"><strong id="delete-file-title"></strong></p>
                     <p class="text-danger small mt-2">
-                        <i class="bi bi-exclamation-circle"></i> This action cannot be undone. The file will be removed from all websites where it's linked.
+                        <i class="bi bi-exclamation-circle"></i> This action cannot be undone. The file will be removed
+                        from all websites where it's linked.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -596,7 +644,7 @@
         let currentDeleteItem = null;
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initDropZone();
             initDownloadItems();
             initFilters();
@@ -610,7 +658,7 @@
             const fileInput = document.getElementById('fileInput');
 
             dropZone.addEventListener('click', () => fileInput.click());
-            
+
             dropZone.addEventListener('dragover', (e) => {
                 e.preventDefault();
                 dropZone.classList.add('dragover');
@@ -633,7 +681,7 @@
 
         function handleFiles(files) {
             if (files.length === 0) return;
-            
+
             const file = files[0];
             const preview = document.getElementById('uploadPreview');
             const previewIcon = document.getElementById('previewIcon');
@@ -677,7 +725,7 @@
         function initDownloadItems() {
             // Edit buttons
             document.querySelectorAll('.btn-edit-download').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.stopPropagation();
                     const item = this.closest('.download-item');
                     currentEditItem = item;
@@ -687,7 +735,7 @@
 
             // Download buttons
             document.querySelectorAll('.btn-download-file').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.stopPropagation();
                     const item = this.closest('.download-item');
                     simulateDownload(item);
@@ -698,13 +746,13 @@
         function populateEditModal(item) {
             const type = item.dataset.type;
             const editIcon = document.getElementById('editFileIcon');
-            
+
             // Set icon based on type
             let iconClass = 'bi-file-earmark';
             if (type === 'pdf') iconClass = 'bi-file-earmark-pdf-fill';
             else if (type === 'doc') iconClass = 'bi-file-earmark-word-fill';
             else if (type === 'xls') iconClass = 'bi-file-earmark-excel-fill';
-            
+
             editIcon.innerHTML = `<i class="bi ${iconClass}"></i>`;
             editIcon.className = `edit-file-icon file-icon-${type}`;
 
@@ -714,7 +762,7 @@
             document.getElementById('editDownloadCount').textContent = item.dataset.downloads;
             document.getElementById('editDate').textContent = item.dataset.date;
             document.getElementById('editId').textContent = item.dataset.id;
-            
+
             // SEO URL
             const slug = item.dataset.title.toLowerCase()
                 .replace(/[^a-z0-9\s]/g, '')
@@ -725,7 +773,7 @@
             document.getElementById('edit-title-en').value = item.dataset.title;
             document.getElementById('edit-desc-en').value = item.dataset.description || '';
             document.getElementById('edit-category').value = item.dataset.category || '';
-            
+
             // Default to dsr24.de checked
             document.getElementById('edit-site-dsr24').checked = true;
         }
@@ -736,7 +784,7 @@
             count++;
             item.dataset.downloads = count;
             item.querySelector('.meta-downloads').innerHTML = `<i class="bi bi-download"></i> ${count}`;
-            
+
             showToast(`Downloading: ${item.dataset.filename}`);
             updateStats();
         }
@@ -744,10 +792,10 @@
         // Filter functionality
         function initFilters() {
             document.querySelectorAll('.filter-tab').forEach(tab => {
-                tab.addEventListener('click', function() {
+                tab.addEventListener('click', function () {
                     document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     const filter = this.textContent.trim().toLowerCase();
                     document.querySelectorAll('.download-item').forEach(item => {
                         if (filter.startsWith('all')) {
@@ -764,7 +812,7 @@
             });
 
             // Search
-            document.getElementById('downloadSearch').addEventListener('input', function() {
+            document.getElementById('downloadSearch').addEventListener('input', function () {
                 const search = this.value.toLowerCase();
                 document.querySelectorAll('.download-item').forEach(item => {
                     const text = (item.dataset.title + ' ' + item.dataset.filename + ' ' + item.dataset.description + ' ' + item.dataset.category).toLowerCase();
@@ -776,10 +824,10 @@
         // View toggle
         function initViewToggle() {
             document.querySelectorAll('.view-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     const grid = document.getElementById('downloadsGrid');
                     if (this.dataset.view === 'list') {
                         grid.classList.add('list-view');
@@ -810,7 +858,7 @@
         function deleteDownload() {
             currentDeleteItem = currentEditItem;
             document.getElementById('delete-file-title').textContent = currentEditItem.dataset.title;
-            
+
             bootstrap.Modal.getInstance(document.getElementById('editDownloadModal')).hide();
             const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
             deleteModal.show();
@@ -818,11 +866,11 @@
 
         function confirmDelete() {
             if (!currentDeleteItem) return;
-            
+
             currentDeleteItem.style.transition = 'opacity 0.3s, transform 0.3s';
             currentDeleteItem.style.opacity = '0';
             currentDeleteItem.style.transform = 'scale(0.8)';
-            
+
             setTimeout(() => {
                 currentDeleteItem.remove();
                 updateStats();
@@ -841,12 +889,12 @@
             }
 
             bootstrap.Modal.getInstance(document.getElementById('uploadDownloadModal')).hide();
-            
+
             // Reset form
             preview.style.display = 'none';
             document.getElementById('dropZone').style.display = '';
             document.getElementById('uploadDownloadForm').reset();
-            
+
             showToast('File uploaded successfully!');
             updateStats();
         }
@@ -858,7 +906,7 @@
             const docs = document.querySelectorAll('.download-item[data-type="doc"]').length;
             const sheets = document.querySelectorAll('.download-item[data-type="xls"]').length;
             const total = allItems.length;
-            
+
             // Calculate total storage from data-size attributes
             let totalBytes = 0;
             allItems.forEach(item => {
@@ -872,7 +920,7 @@
                     totalBytes += size * 1024;
                 }
             });
-            
+
             // Format storage
             let storageStr;
             if (totalBytes >= 1024 * 1024 * 1024) {
@@ -880,19 +928,19 @@
             } else {
                 storageStr = (totalBytes / (1024 * 1024)).toFixed(1) + ' MB';
             }
-            
+
             // Calculate total downloads
             let totalDownloads = 0;
             allItems.forEach(item => {
                 totalDownloads += parseInt(item.dataset.downloads) || 0;
             });
-            
+
             // Update stats cards
             document.getElementById('statTotalFiles').textContent = total;
             document.getElementById('statPdfs').textContent = pdfs;
             document.getElementById('statStorage').textContent = storageStr;
             document.getElementById('statDownloads').textContent = totalDownloads;
-            
+
             // Update filter badges
             document.getElementById('filterAll').textContent = total;
             document.getElementById('filterPdfs').textContent = pdfs;

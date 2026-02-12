@@ -19,245 +19,277 @@
 
 </head>
 
-<body>
+<body class="premodal">
 
-    <div class="container-fluid">
-        <div class="row">
+    <!-- SIDEBAR -->
+    <div id="sidebar"></div>
 
-            <!-- SIDEBAR -->
-            <div id="sidebar"></div>
+    <!-- MAIN CONTENT -->
+    <main id="main" class="bg-light">
+        <button class="openbtn d-flex" onclick="openNav()">&#9776; Open Sidebar</button>
 
-            <!-- MAIN CONTENT -->
-            <main id="main" class="col-12 col-md-10 bg-light">
-                <div class="dashboard-content">
-                    <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+        <div class="dashboard-content">
 
-                    <!-- Page Header -->
-                    <section class="page-header">
-                        <div class="page-header-content">
-                            <div class="page-header-text">
-                                <h2 class="fw-bold">Job Offers</h2>
-                                <p>Manage job offers across all websites. Create once, publish on multiple sites.</p>
-                            </div>
-                            <button class="btn btn-primary btn-create" data-bs-toggle="modal" data-bs-target="#createJobModal">
-                                <i class="bi bi-plus-lg"></i> New Job Offer
-                            </button>
-                        </div>
-                    </section>
-
-                    <!-- Stats Cards -->
-                    <section class="jobs-stats">
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <div class="stat-card stat-card-green">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-check-circle"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value">5</p>
-                                        <p class="stat-label">Active Offers</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="stat-card stat-card-orange">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-clock-history"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value">2</p>
-                                        <p class="stat-label">Expiring Soon</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="stat-card stat-card-gray">
-                                    <div class="stat-icon">
-                                        <i class="bi bi-archive"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <p class="stat-value">12</p>
-                                        <p class="stat-label">Archived</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Filters -->
-                    <section class="jobs-filters">
-                        <div class="filters-row">
-                            <div class="filter-tabs">
-                                <button class="filter-tab active">Active <span class="badge">5</span></button>
-                                <button class="filter-tab">All <span class="badge">17</span></button>
-                                <button class="filter-tab">Archived <span class="badge">12</span></button>
-                            </div>
-                            <div class="filter-search">
-                                <i class="bi bi-search"></i>
-                                <input type="text" placeholder="Search job offers...">
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Jobs Table -->
-                    <section class="jobs-table-section">
-                        <div class="table-responsive">
-                            <table class="table jobs-table" id="jobsTable">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Position</th>
-                                        <th>Location</th>
-                                        <th>Home Office</th>
-                                        <th>Published On</th>
-                                        <th>Valid Until</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr data-job-id="2026/01" data-title="Senior Frontend Developer" data-lang="en" data-location="Remote" data-home-office="remote" data-sites="dsr24.de,kfzvs.de" data-valid="2026-03-31" data-start="ASAP" data-email="dev@dsr24.de" data-description="We are looking for a Senior Frontend Developer to join our team...">
-                                        <td><span class="job-id">2026/01</span></td>
-                                        <td>
-                                            <div class="job-title-cell">
-                                                <span class="job-title">Senior Frontend Developer</span>
-                                                <span class="job-lang badge-lang-en">EN</span>
-                                            </div>
-                                        </td>
-                                        <td>Remote</td>
-                                        <td><span class="badge-remote">Remote</span></td>
-                                        <td>
-                                            <div class="sites-badges">
-                                                <span class="site-badge">dsr24.de</span>
-                                                <span class="site-badge">kfzvs.de</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="date-valid">Mar 31, 2026</span>
-                                        </td>
-                                        <td>
-                                            <div class="action-buttons">
-                                                <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
-                                                <button class="btn-action btn-duplicate" title="Duplicate"><i class="bi bi-copy"></i></button>
-                                                <button class="btn-action btn-action-danger btn-archive" title="Archive" data-bs-toggle="modal" data-bs-target="#archiveModal"><i class="bi bi-archive"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr data-job-id="2026/02" data-title="Kfz-Sachverständiger (m/w/d)" data-lang="de" data-location="Hessisch Oldendorf" data-home-office="partly" data-sites="dsr24.de,kfzvs.de,dsgutachten.de" data-valid="2026-04-15" data-start="2026-05-01" data-email="jobs@dsr24.de" data-description="Wir suchen einen erfahrenen Kfz-Sachverständigen für unser Team...">
-                                        <td><span class="job-id">2026/02</span></td>
-                                        <td>
-                                            <div class="job-title-cell">
-                                                <span class="job-title">Kfz-Sachverständiger (m/w/d)</span>
-                                                <span class="job-lang badge-lang-de">DE</span>
-                                            </div>
-                                        </td>
-                                        <td>Hessisch Oldendorf</td>
-                                        <td><span class="badge-partly">Partly</span></td>
-                                        <td>
-                                            <div class="sites-badges">
-                                                <span class="site-badge">dsr24.de</span>
-                                                <span class="site-badge">kfzvs.de</span>
-                                                <span class="site-badge">dsgutachten.de</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="date-valid">Apr 15, 2026</span>
-                                        </td>
-                                        <td>
-                                            <div class="action-buttons">
-                                                <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
-                                                <button class="btn-action btn-duplicate" title="Duplicate"><i class="bi bi-copy"></i></button>
-                                                <button class="btn-action btn-action-danger btn-archive" title="Archive" data-bs-toggle="modal" data-bs-target="#archiveModal"><i class="bi bi-archive"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr data-job-id="2026/03" data-title="Customer Care Specialist" data-lang="de" data-location="Hessisch Oldendorf" data-home-office="not-possible" data-sites="dsr24.de" data-valid="2026-02-28" data-start="ASAP" data-email="hr@dsr24.de" data-description="Für unseren Kundenservice suchen wir Verstärkung...">
-                                        <td><span class="job-id">2026/03</span></td>
-                                        <td>
-                                            <div class="job-title-cell">
-                                                <span class="job-title">Customer Care Specialist</span>
-                                                <span class="job-lang badge-lang-de">DE</span>
-                                            </div>
-                                        </td>
-                                        <td>Hessisch Oldendorf</td>
-                                        <td><span class="badge-not-possible">Not possible</span></td>
-                                        <td>
-                                            <div class="sites-badges">
-                                                <span class="site-badge">dsr24.de</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="date-expiring">Feb 28, 2026</span>
-                                        </td>
-                                        <td>
-                                            <div class="action-buttons">
-                                                <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
-                                                <button class="btn-action btn-duplicate" title="Duplicate"><i class="bi bi-copy"></i></button>
-                                                <button class="btn-action btn-action-danger btn-archive" title="Archive" data-bs-toggle="modal" data-bs-target="#archiveModal"><i class="bi bi-archive"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr data-job-id="2026/04" data-title="Backend Developer (Python)" data-lang="en" data-location="Remote" data-home-office="remote" data-sites="dsr24.de" data-valid="2026-05-01" data-start="2026-04-01" data-email="dev@dsr24.de" data-description="Join our backend team as a Python developer...">
-                                        <td><span class="job-id">2026/04</span></td>
-                                        <td>
-                                            <div class="job-title-cell">
-                                                <span class="job-title">Backend Developer (Python)</span>
-                                                <span class="job-lang badge-lang-en">EN</span>
-                                            </div>
-                                        </td>
-                                        <td>Remote</td>
-                                        <td><span class="badge-remote">Remote</span></td>
-                                        <td>
-                                            <div class="sites-badges">
-                                                <span class="site-badge">dsr24.de</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="date-valid">May 01, 2026</span>
-                                        </td>
-                                        <td>
-                                            <div class="action-buttons">
-                                                <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
-                                                <button class="btn-action btn-duplicate" title="Duplicate"><i class="bi bi-copy"></i></button>
-                                                <button class="btn-action btn-action-danger btn-archive" title="Archive" data-bs-toggle="modal" data-bs-target="#archiveModal"><i class="bi bi-archive"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr data-job-id="2026/05" data-title="Vertriebsmitarbeiter Außendienst" data-lang="de" data-location="Nordrhein-Westfalen" data-home-office="partly" data-sites="kfzvs.de" data-valid="2026-02-20" data-start="ASAP" data-email="sales@dsr24.de" data-description="Für unser Vertriebsteam suchen wir Außendienstmitarbeiter...">
-                                        <td><span class="job-id">2026/05</span></td>
-                                        <td>
-                                            <div class="job-title-cell">
-                                                <span class="job-title">Vertriebsmitarbeiter Außendienst</span>
-                                                <span class="job-lang badge-lang-de">DE</span>
-                                            </div>
-                                        </td>
-                                        <td>Nordrhein-Westfalen</td>
-                                        <td><span class="badge-partly">Partly</span></td>
-                                        <td>
-                                            <div class="sites-badges">
-                                                <span class="site-badge">kfzvs.de</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="date-expiring">Feb 20, 2026</span>
-                                        </td>
-                                        <td>
-                                            <div class="action-buttons">
-                                                <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
-                                                <button class="btn-action btn-duplicate" title="Duplicate"><i class="bi bi-copy"></i></button>
-                                                <button class="btn-action btn-action-danger btn-archive" title="Archive" data-bs-toggle="modal" data-bs-target="#archiveModal"><i class="bi bi-archive"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
-
+            <!-- Page Header -->
+            <section class="page-header">
+                <div class="page-header-content">
+                    <div class="page-header-text">
+                        <h2 class="fw-bold">Job Offers</h2>
+                        <p>Manage job offers across all websites. Create once, publish on multiple sites.</p>
+                    </div>
+                    <button class="btn btn-primary btn-create" data-bs-toggle="modal" data-bs-target="#createJobModal">
+                        <i class="bi bi-plus-lg"></i> New Job Offer
+                    </button>
                 </div>
-            </main>
+            </section>
+
+            <!-- Stats Cards -->
+            <section class="jobs-stats">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="stat-card stat-card-green">
+                            <div class="stat-icon">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value">5</p>
+                                <p class="stat-label">Active Offers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card stat-card-orange">
+                            <div class="stat-icon">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value">2</p>
+                                <p class="stat-label">Expiring Soon</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card stat-card-gray">
+                            <div class="stat-icon">
+                                <i class="bi bi-archive"></i>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-value">12</p>
+                                <p class="stat-label">Archived</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters -->
+            <section class="jobs-filters">
+                <div class="filters-row">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">Active <span class="badge">5</span></button>
+                        <button class="filter-tab">All <span class="badge">17</span></button>
+                        <button class="filter-tab">Archived <span class="badge">12</span></button>
+                    </div>
+                    <div class="filter-search">
+                        <i class="bi bi-search"></i>
+                        <input type="text" placeholder="Search job offers...">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Jobs Table -->
+            <section class="jobs-table-section">
+                <div class="table-responsive">
+                    <table class="table jobs-table" id="jobsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Position</th>
+                                <th>Location</th>
+                                <th>Home Office</th>
+                                <th>Published On</th>
+                                <th>Valid Until</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-job-id="2026/01" data-title="Senior Frontend Developer" data-lang="en"
+                                data-location="Remote" data-home-office="remote" data-sites="dsr24.de,kfzvs.de"
+                                data-valid="2026-03-31" data-start="ASAP" data-email="dev@dsr24.de"
+                                data-description="We are looking for a Senior Frontend Developer to join our team...">
+                                <td><span class="job-id">2026/01</span></td>
+                                <td>
+                                    <div class="job-title-cell">
+                                        <span class="job-title">Senior Frontend Developer</span>
+                                        <span class="job-lang badge-lang-en">EN</span>
+                                    </div>
+                                </td>
+                                <td>Remote</td>
+                                <td><span class="badge-remote">Remote</span></td>
+                                <td>
+                                    <div class="sites-badges">
+                                        <span class="site-badge">dsr24.de</span>
+                                        <span class="site-badge">kfzvs.de</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="date-valid">Mar 31, 2026</span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-duplicate" title="Duplicate"><i
+                                                class="bi bi-copy"></i></button>
+                                        <button class="btn-action btn-action-danger btn-archive" title="Archive"
+                                            data-bs-toggle="modal" data-bs-target="#archiveModal"><i
+                                                class="bi bi-archive"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-job-id="2026/02" data-title="Kfz-Sachverständiger (m/w/d)" data-lang="de"
+                                data-location="Hessisch Oldendorf" data-home-office="partly"
+                                data-sites="dsr24.de,kfzvs.de,dsgutachten.de" data-valid="2026-04-15"
+                                data-start="2026-05-01" data-email="jobs@dsr24.de"
+                                data-description="Wir suchen einen erfahrenen Kfz-Sachverständigen für unser Team...">
+                                <td><span class="job-id">2026/02</span></td>
+                                <td>
+                                    <div class="job-title-cell">
+                                        <span class="job-title">Kfz-Sachverständiger (m/w/d)</span>
+                                        <span class="job-lang badge-lang-de">DE</span>
+                                    </div>
+                                </td>
+                                <td>Hessisch Oldendorf</td>
+                                <td><span class="badge-partly">Partly</span></td>
+                                <td>
+                                    <div class="sites-badges">
+                                        <span class="site-badge">dsr24.de</span>
+                                        <span class="site-badge">kfzvs.de</span>
+                                        <span class="site-badge">dsgutachten.de</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="date-valid">Apr 15, 2026</span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-duplicate" title="Duplicate"><i
+                                                class="bi bi-copy"></i></button>
+                                        <button class="btn-action btn-action-danger btn-archive" title="Archive"
+                                            data-bs-toggle="modal" data-bs-target="#archiveModal"><i
+                                                class="bi bi-archive"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-job-id="2026/03" data-title="Customer Care Specialist" data-lang="de"
+                                data-location="Hessisch Oldendorf" data-home-office="not-possible" data-sites="dsr24.de"
+                                data-valid="2026-02-28" data-start="ASAP" data-email="hr@dsr24.de"
+                                data-description="Für unseren Kundenservice suchen wir Verstärkung...">
+                                <td><span class="job-id">2026/03</span></td>
+                                <td>
+                                    <div class="job-title-cell">
+                                        <span class="job-title">Customer Care Specialist</span>
+                                        <span class="job-lang badge-lang-de">DE</span>
+                                    </div>
+                                </td>
+                                <td>Hessisch Oldendorf</td>
+                                <td><span class="badge-not-possible">Not possible</span></td>
+                                <td>
+                                    <div class="sites-badges">
+                                        <span class="site-badge">dsr24.de</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="date-expiring">Feb 28, 2026</span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-duplicate" title="Duplicate"><i
+                                                class="bi bi-copy"></i></button>
+                                        <button class="btn-action btn-action-danger btn-archive" title="Archive"
+                                            data-bs-toggle="modal" data-bs-target="#archiveModal"><i
+                                                class="bi bi-archive"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-job-id="2026/04" data-title="Backend Developer (Python)" data-lang="en"
+                                data-location="Remote" data-home-office="remote" data-sites="dsr24.de"
+                                data-valid="2026-05-01" data-start="2026-04-01" data-email="dev@dsr24.de"
+                                data-description="Join our backend team as a Python developer...">
+                                <td><span class="job-id">2026/04</span></td>
+                                <td>
+                                    <div class="job-title-cell">
+                                        <span class="job-title">Backend Developer (Python)</span>
+                                        <span class="job-lang badge-lang-en">EN</span>
+                                    </div>
+                                </td>
+                                <td>Remote</td>
+                                <td><span class="badge-remote">Remote</span></td>
+                                <td>
+                                    <div class="sites-badges">
+                                        <span class="site-badge">dsr24.de</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="date-valid">May 01, 2026</span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-duplicate" title="Duplicate"><i
+                                                class="bi bi-copy"></i></button>
+                                        <button class="btn-action btn-action-danger btn-archive" title="Archive"
+                                            data-bs-toggle="modal" data-bs-target="#archiveModal"><i
+                                                class="bi bi-archive"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-job-id="2026/05" data-title="Vertriebsmitarbeiter Außendienst" data-lang="de"
+                                data-location="Nordrhein-Westfalen" data-home-office="partly" data-sites="kfzvs.de"
+                                data-valid="2026-02-20" data-start="ASAP" data-email="sales@dsr24.de"
+                                data-description="Für unser Vertriebsteam suchen wir Außendienstmitarbeiter...">
+                                <td><span class="job-id">2026/05</span></td>
+                                <td>
+                                    <div class="job-title-cell">
+                                        <span class="job-title">Vertriebsmitarbeiter Außendienst</span>
+                                        <span class="job-lang badge-lang-de">DE</span>
+                                    </div>
+                                </td>
+                                <td>Nordrhein-Westfalen</td>
+                                <td><span class="badge-partly">Partly</span></td>
+                                <td>
+                                    <div class="sites-badges">
+                                        <span class="site-badge">kfzvs.de</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="date-expiring">Feb 20, 2026</span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-duplicate" title="Duplicate"><i
+                                                class="bi bi-copy"></i></button>
+                                        <button class="btn-action btn-action-danger btn-archive" title="Archive"
+                                            data-bs-toggle="modal" data-bs-target="#archiveModal"><i
+                                                class="bi bi-archive"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
         </div>
-    </div>
+    </main>
+
 
     <!-- Create Job Modal -->
     <div class="modal fade" id="createJobModal" tabindex="-1" aria-labelledby="createJobModalLabel" aria-hidden="true">
@@ -300,7 +332,8 @@
                             <!-- Description -->
                             <div class="col-12">
                                 <label class="form-label">Job Description</label>
-                                <textarea class="form-control" rows="6" placeholder="Full job description..."></textarea>
+                                <textarea class="form-control" rows="6"
+                                    placeholder="Full job description..."></textarea>
                             </div>
 
                             <!-- Home Office -->
@@ -478,7 +511,8 @@
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="edit-site-dsgutachten">
-                                        <label class="form-check-label" for="edit-site-dsgutachten">dsgutachten.de</label>
+                                        <label class="form-check-label"
+                                            for="edit-site-dsgutachten">dsgutachten.de</label>
                                     </div>
                                 </div>
                             </div>
@@ -529,8 +563,10 @@
                 </div>
                 <div class="modal-body">
                     <p>Are you sure you want to archive this job offer?</p>
-                    <p class="mb-0"><strong id="archive-job-title"></strong> <span class="text-muted" id="archive-job-id"></span></p>
-                    <p class="text-muted small mt-2">This job offer will be moved to the Archived section and will no longer be visible on the websites.</p>
+                    <p class="mb-0"><strong id="archive-job-title"></strong> <span class="text-muted"
+                            id="archive-job-id"></span></p>
+                    <p class="text-muted small mt-2">This job offer will be moved to the Archived section and will no
+                        longer be visible on the websites.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
@@ -548,7 +584,8 @@
             <div class="toast-header bg-success text-white">
                 <i class="bi bi-check-circle me-2"></i>
                 <strong class="me-auto">Success</strong>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
             <div class="toast-body" id="toastMessage">
                 Operation completed successfully.
@@ -562,10 +599,10 @@
 
         // Edit button click handler
         document.querySelectorAll('.btn-edit').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const row = this.closest('tr');
                 currentEditRow = row;
-                
+
                 // Populate the edit form
                 document.getElementById('edit-job-id').value = row.dataset.jobId;
                 document.getElementById('edit-title').value = row.dataset.title;
@@ -576,7 +613,7 @@
                 document.getElementById('edit-start').value = row.dataset.start;
                 document.getElementById('edit-email').value = row.dataset.email;
                 document.getElementById('edit-until').value = row.dataset.valid;
-                
+
                 // Set checkboxes for sites
                 const sites = row.dataset.sites.split(',');
                 document.getElementById('edit-site-dsr24').checked = sites.includes('dsr24.de');
@@ -587,10 +624,10 @@
 
         // Archive button click handler
         document.querySelectorAll('.btn-archive').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const row = this.closest('tr');
                 currentArchiveRow = row;
-                
+
                 document.getElementById('archive-job-title').textContent = row.dataset.title;
                 document.getElementById('archive-job-id').textContent = '(' + row.dataset.jobId + ')';
             });
@@ -598,16 +635,16 @@
 
         // Duplicate button click handler
         document.querySelectorAll('.btn-duplicate').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const row = this.closest('tr');
-                
+
                 // Open create modal with pre-filled data
                 const createModal = new bootstrap.Modal(document.getElementById('createJobModal'));
-                
+
                 // Get form fields in create modal
                 const createForm = document.querySelector('#createJobModal .job-form');
                 const inputs = createForm.querySelectorAll('input, select, textarea');
-                
+
                 // Pre-fill some fields (simulated)
                 showToast('Job offer duplicated! Edit the new copy in the form.');
                 createModal.show();
@@ -617,7 +654,7 @@
         // Save edited job
         function saveJob() {
             if (!currentEditRow) return;
-            
+
             // Update row data attributes
             currentEditRow.dataset.title = document.getElementById('edit-title').value;
             currentEditRow.dataset.lang = document.getElementById('edit-lang').value;
@@ -626,31 +663,31 @@
             currentEditRow.dataset.description = document.getElementById('edit-description').value;
             currentEditRow.dataset.start = document.getElementById('edit-start').value;
             currentEditRow.dataset.email = document.getElementById('edit-email').value;
-            
+
             // Update visible cells
             currentEditRow.querySelector('.job-title').textContent = document.getElementById('edit-title').value;
             currentEditRow.querySelector('.job-lang').textContent = document.getElementById('edit-lang').value.toUpperCase();
             currentEditRow.querySelector('.job-lang').className = 'job-lang badge-lang-' + document.getElementById('edit-lang').value;
             currentEditRow.children[2].textContent = document.getElementById('edit-location').value;
-            
+
             // Update home office badge
             const homeOffice = document.getElementById('edit-home-office').value;
             const homeOfficeBadge = currentEditRow.querySelector('[class^="badge-"]');
             homeOfficeBadge.className = '';
             homeOfficeBadge.classList.add('badge-' + homeOffice.replace(' ', '-'));
-            homeOfficeBadge.textContent = homeOffice === 'not-possible' ? 'Not possible' : 
-                                          homeOffice === 'partly' ? 'Partly' : 'Remote';
-            
+            homeOfficeBadge.textContent = homeOffice === 'not-possible' ? 'Not possible' :
+                homeOffice === 'partly' ? 'Partly' : 'Remote';
+
             // Update sites
             const sites = [];
             if (document.getElementById('edit-site-dsr24').checked) sites.push('dsr24.de');
             if (document.getElementById('edit-site-kfzvs').checked) sites.push('kfzvs.de');
             if (document.getElementById('edit-site-dsgutachten').checked) sites.push('dsgutachten.de');
             currentEditRow.dataset.sites = sites.join(',');
-            
+
             const sitesCell = currentEditRow.querySelector('.sites-badges');
             sitesCell.innerHTML = sites.map(s => `<span class="site-badge">${s}</span>`).join('');
-            
+
             // Close modal
             bootstrap.Modal.getInstance(document.getElementById('editJobModal')).hide();
             showToast('Job offer updated successfully!');
@@ -659,20 +696,20 @@
         // Archive job
         function archiveJob() {
             if (!currentArchiveRow) return;
-            
+
             // Add visual feedback
             currentArchiveRow.style.opacity = '0.5';
             currentArchiveRow.style.textDecoration = 'line-through';
-            
+
             // Disable buttons
             currentArchiveRow.querySelectorAll('.btn-action').forEach(btn => {
                 btn.disabled = true;
             });
-            
+
             // Close modal
             bootstrap.Modal.getInstance(document.getElementById('archiveModal')).hide();
             showToast('Job offer archived successfully!');
-            
+
             // Update stats (simulated)
             updateStats();
         }
@@ -704,10 +741,10 @@
 
         // Filter tabs functionality
         document.querySelectorAll('.filter-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
+            tab.addEventListener('click', function () {
                 document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
-                
+
                 // Show/hide rows based on filter (simulated)
                 const filter = this.textContent.trim().toLowerCase();
                 document.querySelectorAll('#jobsTable tbody tr').forEach(row => {
@@ -723,7 +760,7 @@
         });
 
         // Search functionality
-        document.querySelector('.filter-search input').addEventListener('input', function() {
+        document.querySelector('.filter-search input').addEventListener('input', function () {
             const search = this.value.toLowerCase();
             document.querySelectorAll('#jobsTable tbody tr').forEach(row => {
                 const text = row.textContent.toLowerCase();
