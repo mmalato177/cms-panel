@@ -149,15 +149,39 @@ ul {
 /* =====================================================
    Close Button (Top Right)
 ===================================================== */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-200);
+  padding-right: 12px;
+}
+
+.sidebar-header .logo-inner {
+  flex: 1;
+  border-bottom: none;
+}
+
 .closebtn {
-  position: absolute;
-  right: 5px;
-  font-size: 26px;
-  background: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: var(--gray-200);
   border: none;
+  border-radius: 50%;
   cursor: pointer;
   color: var(--gray-600);
   text-decoration: none;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.closebtn:hover {
+  background: var(--dsr-blue);
+  color: #fff;
+  transform: rotate(90deg);
 }
 
 /* =====================================================
@@ -314,20 +338,41 @@ ul {
 .openbtn {
   position: fixed;
   top: 16px;
-  left: 20px;
+  left: 16px;
   z-index: 900;
+  width: 44px;
+  height: 44px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--dsr-blue);
   color: #fff;
   border: none;
-  padding: 8px 12px;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(25, 89, 156, 0.3);
+  transition: all 0.3s ease;
   display: none;
+}
+
+.openbtn i {
+  font-size: 20px;
+  transition: transform 0.3s ease;
 }
 
 .openbtn:hover {
   background: var(--dsr-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(25, 89, 156, 0.4);
+}
+
+.openbtn:hover i {
+  transform: scale(1.1);
+}
+
+.openbtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(25, 89, 156, 0.3);
 }
 
 .openbtn.show {
@@ -340,12 +385,13 @@ ul {
 #main {
   margin-left: 300px;
   padding: 60px 24px 60px 24px;
-  transition: margin-left 0.4s ease;
+  transition: margin-left 0.4s ease, padding-top 0.4s ease;
 }
 
 /* Quando sidebar fechada */
 #main.expanded {
   margin-left: 0;
+  padding-top: 80px;
 }
 
 /* MOBILE FIRST FIX */
@@ -360,7 +406,7 @@ ul {
   }
 
   .openbtn {
-    display: block;
+    display: flex;
   }
 }
 

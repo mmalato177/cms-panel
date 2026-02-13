@@ -25,7 +25,7 @@
 
     <!-- MAIN CONTENT -->
     <main id="main" class="bg-light">
-        <button class="openbtn d-flex" onclick="openNav()">&#9776; Open Sidebar</button>
+        <button class="openbtn" onclick="openNav()"><i class="bi bi-list"></i></button>
 
         <div class="dashboard-content">
             <!-- Page Header -->
@@ -1202,7 +1202,14 @@
             ).hide();
         }
 
-
+        // Auto-open modal if #new hash is present
+        if (window.location.hash === '#new') {
+            window.addEventListener('load', function() {
+                const modal = new bootstrap.Modal(document.getElementById('newBlogModal'));
+                modal.show();
+                history.replaceState(null, '', window.location.pathname);
+            });
+        }
 
     </script>
 

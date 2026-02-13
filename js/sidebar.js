@@ -1,11 +1,13 @@
 function openNav() {
   document.getElementById("mySidebar").classList.remove("closed");
   document.getElementById("main").classList.remove("expanded");
+  document.querySelector(".openbtn")?.classList.remove("show");
 }
 
 function closeNav() {
   document.getElementById("mySidebar").classList.add("closed");
   document.getElementById("main").classList.add("expanded");
+  document.querySelector(".openbtn")?.classList.add("show");
 }
 
 
