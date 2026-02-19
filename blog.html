@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/script.js" defer></script>
     <script src="/js/sidebar.js" defer></script>
     <script src="/js/loadPartials.js" defer></script>
 </head>
@@ -123,8 +124,9 @@
                 <div class="blog-grid" id="blogGrid">
 
                     <!-- Blog Post 1 (Published) -->
-                    <div class="blog-item" data-id="301" data-status="published" data-language="de"
-                        data-author="Leandro" data-date="2026-02-10">
+                    <div class="blog-item" data-id="301"
+                        data-title="Unfallstelle richtig sichern – Das sollten Sie beachten" data-status="published"
+                        data-language="de" data-author="Leandro" data-date="2026-02-10">
 
                         <div class="blog-thumbnail">
                             <img src="img/blog/blog-1.jpg" alt="Unfallstelle sichern"
@@ -148,7 +150,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -172,8 +175,9 @@
                             </p>
                         </div>
                     </div>
+
                     <!-- Blog Post 1 (Scheduled Example) -->
-                    <div class="blog-item" data-id="303" data-status="scheduled" data-language="de"
+                    <div class="blog-item" data-id="302" data-title="Was ist ein Schadensgutachten und wann brauche ich es?" data-status="scheduled" data-language="de"
                         data-author="Katharina" data-date="2026-03-01">
 
                         <div class="blog-thumbnail">
@@ -198,7 +202,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -221,8 +226,9 @@
                             </p>
                         </div>
                     </div>
+
                     <!-- Blog Post 1 (Archived)-->
-                    <div class="blog-item" data-id="301" data-status="archived" data-language="de" data-author="Leandro"
+                    <div class="blog-item" data-id="303" data-title="Unfallstelle richtig sichern – Das sollten Sie beachten" data-status="archived" data-language="de" data-author="Leandro"
                         data-date="2025-12-10">
 
                         <div class="blog-thumbnail">
@@ -247,7 +253,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -272,7 +279,7 @@
                     </div>
 
                     <!-- Blog Post 1 (Draft Example) -->
-                    <div class="blog-item" data-id="303" data-status="draft" data-language="de" data-author="Katharina"
+                    <div class="blog-item" data-id="304" data-title="5 Tips to Speed Up Your Insurance Claim" data-status="draft" data-language="de" data-author="Katharina"
                         data-date="">
 
                         <div class="blog-thumbnail">
@@ -297,7 +304,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -322,7 +330,7 @@
                     </div>
 
                     <!-- Blog Post 2 (Scheduled Example) -->
-                    <div class="blog-item" data-id="303" data-status="scheduled" data-language="de"
+                    <div class="blog-item" data-id="305" data-title="Was ist ein Schadensgutachten und wann brauche ich es?" data-status="scheduled" data-language="de"
                         data-author="Katharina" data-date="2026-03-01">
 
                         <div class="blog-thumbnail">
@@ -347,7 +355,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -372,7 +381,7 @@
                     </div>
 
                     <!--Blog Post 2 (Archived)-->
-                    <div class="blog-item" data-id="301" data-status="archived" data-language="de" data-author="Leandro"
+                    <div class="blog-item" data-id="306" data-title="Unfallstelle richtig sichern – Das sollten Sie beachten" data-status="archived" data-language="de" data-author="Leandro"
                         data-date="2025-12-10">
 
                         <div class="blog-thumbnail">
@@ -397,7 +406,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -420,7 +430,7 @@
                     </div>
 
                     <!--Blog Post 2 (Published)-->
-                    <div class="blog-item" data-id="302" data-status="published" data-language="en"
+                    <div class="blog-item" data-id="307" data-title="DSR24 News: New Features and Updates in February 2026" data-status="published" data-language="en"
                         data-author="Leandro" data-date="2026-02-15">
 
                         <div class="blog-thumbnail">
@@ -445,7 +455,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -471,7 +482,7 @@
                     </div>
 
                     <!-- Blog Post 3 (Archived)-->
-                    <div class="blog-item" data-id="301" data-status="archived" data-language="de" data-author="Leandro"
+                    <div class="blog-item" data-id="308" data-title="Unfallstelle richtig sichern – Das sollten Sie beachten" data-status="archived" data-language="de" data-author="Leandro"
                         data-date="2025-12-10">
 
                         <div class="blog-thumbnail">
@@ -496,7 +507,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -519,7 +531,7 @@
                     </div>
 
                     <!-- Blog Post 2 (Scheduled Example) -->
-                    <div class="blog-item" data-id="303" data-status="scheduled" data-language="de"
+                    <div class="blog-item" data-id="309" data-title="Was ist ein Schadensgutachten und wann brauche ich es?" data-status="scheduled" data-language="de"
                         data-author="Katharina" data-date="2026-03-01">
 
                         <div class="blog-thumbnail">
@@ -544,7 +556,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -569,7 +582,7 @@
                     </div>
 
                     <!--Blog Post 4 (Published )-->
-                    <div class="blog-item" data-id="304" data-status="published" data-language="de">
+                    <div class="blog-item" data-id="310" data-title="DSR24 Update: Neue Funktionen und Verbesserungen im März 2026" data-status="published" data-language="de">
                         <div class="blog-thumbnail">
                             <img src="img/blog/blog-4.jpg" alt="DSR24 Update"
                                 onerror="this.src='https://placehold.co/400x250/19599C/ffffff?text=DSR24+Blog'">
@@ -592,7 +605,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -615,7 +629,7 @@
                         </div>
                     </div>
                     <!-- Blog Post 2 (Draft Example) -->
-                    <div class="blog-item" data-id="303" data-status="draft" data-language="de" data-author="Katharina"
+                    <div class="blog-item" data-id="311" data-title="5 Tips to Speed Up Your Insurance Claim" data-status="draft" data-language="de" data-author="Katharina"
                         data-date="">
 
                         <div class="blog-thumbnail">
@@ -640,7 +654,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -665,7 +680,7 @@
                     </div>
 
                     <!--Blog Post 3 (Published)-->
-                    <div class="blog-item" data-id="302" data-status="published" data-language="en"
+                    <div class="blog-item" data-id="312" data-title="DSR24 News: New Features and Updates in February 2026" data-status="published" data-language="en"
                         data-author="Leandro" data-date="2026-02-15">
 
                         <div class="blog-thumbnail">
@@ -690,7 +705,8 @@
                                 <button class="overlay-btn btn-edit" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-                                <button class="overlay-btn btn-delete" title="Delete">
+                                <button class="overlay-btn btn-delete" title="Delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </div>
@@ -1002,51 +1018,11 @@
             </div>
         </div>
 
-        <!-- Delete Blog Confirmation -->
-        <div class="modal fade" id="deleteBlogModal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-
-                    <div class="modal-header bg-danger text-white">
-                        <h5 class="modal-title">
-                            <i class="bi bi-exclamation-triangle"></i> Delete Blog Post
-                        </h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <p>Are you sure you want to delete this blog post?</p>
-                        <p><strong id="deleteBlogTitle"></strong></p>
-                        <p class="text-danger small">
-                            This action cannot be undone.
-                        </p>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger" onclick="confirmDeleteBlog()">
-                            <i class="bi bi-trash"></i> Delete Permanently
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
+        <!--Delete Modal-->
+        <div id="delete-modal"></div>
         <!-- Success Toast -->
-        <div class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div id="successToast" class="toast" role="alert">
-                <div class="toast-header bg-success text-white">
-                    <i class="bi bi-check-circle me-2"></i>
-                    <strong class="me-auto">Success</strong>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
-                </div>
-                <div class="toast-body" id="toastMessage">
-                    Operation completed successfully.
-                </div>
-            </div>
-        </div>
+        <div id="success-toast"></div>
+
     </main>
     <script>
 
@@ -1080,15 +1056,6 @@
                             item.style.display = item.dataset.status === 'archived' ? '' : 'none';
                         }
                     });
-                });
-            });
-
-            // Search
-            document.getElementById('blogSearch').addEventListener('input', function () {
-                const search = this.value.toLowerCase();
-                document.querySelectorAll('.blog-item').forEach(item => {
-                    const text = (item.dataset.title + ' ' + item.dataset.filename + ' ' + item.dataset.description + ' ' + item.dataset.category).toLowerCase();
-                    item.style.display = text.includes(search) ? '' : 'none';
                 });
             });
         }
@@ -1134,20 +1101,7 @@
                 });
             });
 
-            // DELETE BUTTON
-            document.querySelectorAll('.btn-delete').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    const item = this.closest('.blog-item');
-                    currentDeleteItem = item;
-
-                    document.getElementById('deleteBlogTitle').textContent =
-                        item.querySelector('.blog-title').textContent;
-
-                    const modal = new bootstrap.Modal(document.getElementById('deleteBlogModal'));
-                    modal.show();
-                });
-            });
+           
         }
         function populateBlogEditModal(item) {
 
@@ -1192,19 +1146,10 @@
             modal.show();
         }
 
-        function confirmDeleteBlog() {
-            if (!currentDeleteItem) return;
-
-            currentDeleteItem.remove();
-
-            bootstrap.Modal.getInstance(
-                document.getElementById('deleteBlogModal')
-            ).hide();
-        }
 
         // Auto-open modal if #new hash is present
         if (window.location.hash === '#new') {
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 const modal = new bootstrap.Modal(document.getElementById('newBlogModal'));
                 modal.show();
                 history.replaceState(null, '', window.location.pathname);

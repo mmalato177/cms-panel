@@ -13,7 +13,8 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/js/script.js" defer></script>
     <script src="/js/sidebar.js" defer></script>
     <script src="/js/loadPartials.js" defer></script>
 </head>
@@ -96,16 +97,16 @@
                     <div class="filter-actions">
                         <div class="filter-search">
                             <i class="bi bi-search"></i>
-                            <input type="text" placeholder="Search pages..." id="pageSearch">
+                            <input type="text" placeholder="Search pages..." id="searchInput">
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- FAQ Items -->
+            <!-- Page Items -->
             <section class="page-table-section">
                 <div class="table-responsive">
-                    <table class="table page-table" id="pageTable">
+                    <table class="table page-table" id="generic-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -134,12 +135,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=201">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -167,12 +167,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=202">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
 
@@ -201,12 +200,11 @@
                                 <td>
 
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=203">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -235,12 +233,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=204">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -268,12 +265,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=205">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -301,12 +297,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=206">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                       <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -333,12 +328,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=207">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                       <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -366,12 +360,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=208">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -398,12 +391,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=209">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -431,12 +423,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=210">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -464,12 +455,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=211">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -496,12 +486,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=212">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -529,12 +518,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=213">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -560,12 +548,11 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=214">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                       <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -591,16 +578,17 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <a class="btn-action btn-edit" title="Edit" href="/edit/page.html?id=215">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <button class="btn-action btn-action-danger btn-delete" title="Delete"
-                                            data-bs-toggle="modal" data-bs-target="#deletePageModal">
-                                            <i class="bi bi-trash"></i>
+                                        <button class="btn-action btn-edit" title="Edit" data-bs-toggle="modal"
+                                            data-bs-target="#editJobModal"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn-action btn-action-danger" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            <i class="bi bi-archive"></i>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
+
+                            
                         </tbody>
                     </table>
                 </div>
@@ -608,29 +596,9 @@
         </div>
 
     </main>
-    <script>
-        // Page search functionality
-        document.getElementById('pageSearch').addEventListener('input', function () {
 
-            const search = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#pageTable tbody tr');
-
-            rows.forEach(row => {
-
-                const text = (
-                    row.dataset.name + ' ' +
-                    row.dataset.id
-                ).toLowerCase();
-
-                row.style.display = text.includes(search) ? '' : 'none';
-
-            });
-
-        });
-
-
-    </script>
-
+    <div id="archive-modal"></div>
+    <div id="success-toast"></div>
 </body>
 
 </html>
