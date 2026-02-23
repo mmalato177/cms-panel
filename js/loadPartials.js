@@ -57,6 +57,7 @@ async function loadAllPartials() {
   await loadPartial("#sidebar", "/partials/sidebar.html");
   await loadPartial("#archive-modal", "/partials/archive-modal.html");
   await loadPartial("#delete-modal", "/partials/delete-modal.html");
+  await loadPartial("#image-modal", "/partials/image-modal.html");
   await loadPartial("#success-toast", "/partials/success-toast.html");
   
   // Set active sidebar link based on current page

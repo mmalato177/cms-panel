@@ -15,6 +15,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/script.js" defer></script>
+    <script src="/js/blog.js" defer></script>
     <script src="/js/sidebar.js" defer></script>
     <script src="/js/loadPartials.js" defer></script>
 </head>
@@ -1023,140 +1024,7 @@
         <!-- Success Toast -->
         <div id="success-toast"></div>
 
-    </main>
-    <script>
-
-        let currentEditItem = null;
-        let currentDeleteItem = null;
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function () {
-            initFilters();
-            initViewToggle();
-            initBlogItems();
-
-        });
-        // Filter functionality
-        function initFilters() {
-            document.querySelectorAll('.filter-tab').forEach(tab => {
-                tab.addEventListener('click', function () {
-                    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-
-                    const filter = this.textContent.trim().toLowerCase();
-                    document.querySelectorAll('.blog-item').forEach(item => {
-                        if (filter.startsWith('all')) {
-                            item.style.display = '';
-                        } else if (filter.startsWith('pub')) {
-                            item.style.display = item.dataset.status === 'published' ? '' : 'none';
-                        } else if (filter.startsWith('draft')) {
-                            item.style.display = item.dataset.status === 'draft' ? '' : 'none';
-                        } else if (filter.startsWith('sched')) {
-                            item.style.display = item.dataset.status === 'scheduled' ? '' : 'none';
-                        } else if (filter.startsWith('arch')) {
-                            item.style.display = item.dataset.status === 'archived' ? '' : 'none';
-                        }
-                    });
-                });
-            });
-        }
-
-        // View toggle
-        function initViewToggle() {
-            document.querySelectorAll('.view-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-
-                    const grid = document.getElementById('blogGrid');
-                    if (this.dataset.view === 'list') {
-                        grid.classList.add('list-view');
-                    } else {
-                        grid.classList.remove('list-view');
-                    }
-                });
-            });
-        }
-
-        function initBlogItems() {
-
-            // EDIT BUTTON
-            document.querySelectorAll('.btn-edit').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    const item = this.closest('.blog-item');
-                    currentEditItem = item;
-                    populateBlogEditModal(item);
-
-                    const modal = new bootstrap.Modal(document.getElementById('editBlogModal'));
-                    modal.show();
-                });
-            });
-
-            // PREVIEW BUTTON
-            document.querySelectorAll('.btn-preview').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    const item = this.closest('.blog-item');
-                    openBlogPreview(item);
-                });
-            });
-
-           
-        }
-        function populateBlogEditModal(item) {
-
-            const title = item.querySelector('.blog-title').textContent;
-            const excerpt = item.querySelector('.blog-excerpt').textContent;
-            const image = item.querySelector('img').src;
-
-            document.getElementById('edit-blog-title-en').value = title;
-            document.getElementById('edit-blog-excerpt').value = excerpt;
-            document.getElementById('edit-blog-author').value = item.dataset.author || '';
-            document.getElementById('edit-blog-date').value = item.dataset.date || '';
-            document.getElementById('edit-blog-status').value = item.dataset.status || 'draft';
-
-            // ID + slug
-            document.getElementById('editBlogId').textContent = '#' + item.dataset.id;
-
-            const slug = title.toLowerCase()
-                .replace(/[^a-z0-9\s]/g, '')
-                .replace(/\s+/g, '-');
-
-            document.getElementById('editBlogSlug').textContent = `/blog/${slug}`;
-
-        }
-
-        function openBlogPreview(item) {
-
-            const title = item.querySelector('.blog-title').textContent;
-            const excerpt = item.querySelector('.blog-excerpt').textContent;
-            const image = item.querySelector('img').src;
-
-            document.getElementById('previewBlogTitle').textContent = title;
-            document.getElementById('previewBlogAuthor').textContent = item.dataset.author || '';
-            document.getElementById('previewBlogDate').textContent = item.dataset.date || '';
-            document.getElementById('previewBlogImage').src = image;
-
-            document.getElementById('previewBlogContent').innerHTML = `
-        <p>${excerpt}</p>
-        <p><em>This is a preview version of the full article.</em></p>
-    `;
-
-            const modal = new bootstrap.Modal(document.getElementById('previewBlogModal'));
-            modal.show();
-        }
-
-
-        // Auto-open modal if #new hash is present
-        if (window.location.hash === '#new') {
-            window.addEventListener('load', function () {
-                const modal = new bootstrap.Modal(document.getElementById('newBlogModal'));
-                modal.show();
-                history.replaceState(null, '', window.location.pathname);
-            });
-        }
-
-    </script>
+    </main> 
 
 </body>
 

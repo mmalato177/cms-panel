@@ -1,14 +1,10 @@
 
 let currentEditItem = null;
-let currentDeleteItem = null;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function () {
     initDropZone();
     initMediaItems();
-    initFilters();
-    initViewToggle();
-    updateStats();
 });
 
 // Drag & Drop Zone
@@ -84,21 +80,13 @@ function initMediaItems() {
     // Preview buttons
     document.querySelectorAll('.btn-preview').forEach(btn => {
         btn.addEventListener('click', function (e) {
-            e.stopPropagation();
+            
             const item = this.closest('.media-item');
             openPreview(item);
+            e.stopPropagation();
         });
     });
 
-    // Click on thumbnail for preview
-    document.querySelectorAll('.media-thumbnail').forEach(thumb => {
-        thumb.addEventListener('click', function () {
-            const item = this.closest('.media-item');
-            if (item.dataset.type === 'image') {
-                openPreview(item);
-            }
-        });
-    });
 }
 
 function populateEditModal(item) {
@@ -139,43 +127,8 @@ function openPreview(item) {
     modal.show();
 }
 
-// Filter functionality
-function initFilters() {
-    document.querySelectorAll('.filter-tab').forEach(tab => {
-        tab.addEventListener('click', function () {
-            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
 
-            const filter = this.textContent.trim().toLowerCase();
-            document.querySelectorAll('.media-item').forEach(item => {
-                if (filter.startsWith('all')) {
-                    item.style.display = '';
-                } else if (filter.startsWith('images')) {
-                    item.style.display = item.dataset.type === 'image' ? '' : 'none';
-                } else if (filter.startsWith('videos')) {
-                    item.style.display = item.dataset.type === 'video' ? '' : 'none';
-                }
-            });
-        });
-    });
-}
 
-// View toggle
-function initViewToggle() {
-    document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-            document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            const grid = document.getElementById('mediaGrid');
-            if (this.dataset.view === 'list') {
-                grid.classList.add('list-view');
-            } else {
-                grid.classList.remove('list-view');
-            }
-        });
-    });
-}
 
 // Save media
 function saveMedia() {
@@ -193,16 +146,6 @@ function saveMedia() {
 
     bootstrap.Modal.getInstance(document.getElementById('editMediaModal')).hide();
     showToast('Media metadata updated successfully!');
-}
-
-// Delete media
-function deleteMedia() {
-    currentDeleteItem = currentEditItem;
-    document.getElementById('delete-media-caption').textContent = currentEditItem.dataset.caption;
-
-    bootstrap.Modal.getInstance(document.getElementById('editMediaModal')).hide();
-    const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-    deleteModal.show();
 }
 
 
@@ -223,60 +166,19 @@ function uploadMedia() {
     document.getElementById('uploadMediaForm').reset();
 
     showToast('Media file uploaded successfully! AVIF versions are being generated.');
-    updateStats();
-}
-
-// Update stats
-function updateStats() {
-    const allItems = document.querySelectorAll('.media-item');
-    const images = document.querySelectorAll('.media-item[data-type="image"]').length;
-    const videos = document.querySelectorAll('.media-item[data-type="video"]').length;
-    const total = images + videos;
-
-    // Calculate total storage from data-size attributes
-    let totalBytes = 0;
-    allItems.forEach(item => {
-        const sizeStr = item.dataset.size || '0';
-        const size = parseFloat(sizeStr);
-        if (sizeStr.includes('GB')) {
-            totalBytes += size * 1024 * 1024 * 1024;
-        } else if (sizeStr.includes('MB')) {
-            totalBytes += size * 1024 * 1024;
-        } else if (sizeStr.includes('KB')) {
-            totalBytes += size * 1024;
-        }
-    });
-
-    // Format storage
-    let storageStr;
-    if (totalBytes >= 1024 * 1024 * 1024) {
-        storageStr = (totalBytes / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
-    } else {
-        storageStr = (totalBytes / (1024 * 1024)).toFixed(1) + ' MB';
+    updateStats({
+    itemSelector: '.media-item',
+    typeAttribute: 'type',
+    statTotalId: 'filterAll',
+    statStorageId: 'statStorage',
+    extraCounters: [
+        { type: 'image', elementId: 'statImages' },
+        { type: 'video', elementId: 'statVideos' }
+    ],
+    recent: {
+        elementId: 'statRecent',
+        dateAttribute: 'date'
     }
-
-    // Calculate uploads this week (items with date in last 7 days)
-    const now = new Date();
-    const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    let recentCount = 0;
-    allItems.forEach(item => {
-        const dateStr = item.dataset.date;
-        if (dateStr) {
-            const itemDate = new Date(dateStr);
-            if (itemDate >= oneWeekAgo) {
-                recentCount++;
-            }
-        }
-    });
-
-    // Update stats cards
-    document.getElementById('statImages').textContent = images;
-    document.getElementById('statVideos').textContent = videos;
-    document.getElementById('statStorage').textContent = storageStr;
-    document.getElementById('statRecent').textContent = recentCount;
-
-    // Update filter badges
-    document.getElementById('filterAll').textContent = total;
-    document.getElementById('filterImages').textContent = images;
-    document.getElementById('filterVideos').textContent = videos;
+});
 }
+

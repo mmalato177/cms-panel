@@ -15,6 +15,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/script.js" defer></script>
+    <script src="/js/faq.js" defer></script>
     <script src="/js/sidebar.js" defer></script>
     <script src="/js/loadPartials.js" defer></script>
 </head>
@@ -107,6 +108,7 @@
                     </div>
                 </div>
             </section>
+
 
             <!-- FAQ Items -->
             <section class="faq-table-section">
@@ -595,131 +597,8 @@
         <!-- Delete FAQ Confirmation -->
         <div id="delete-modal"></div>
 
-
-
     </main>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            initFilters();
-            initFAQitems();
 
-
-        });
-
-        function initFAQitems() {
-
-            document.querySelectorAll('.btn-edit').forEach(btn => {
-
-                btn.addEventListener('click', function () {
-
-                    const row = this.closest('tr');
-                    currentEditItem = row;
-
-                    populateFaqEditModal(row);
-
-                });
-
-            });
-
-        }
-
-        function populateFaqEditModal(row) {
-
-            // INFO
-            document.getElementById('editFaqId').textContent = row.dataset.id;
-            document.getElementById('editFaqCreated').textContent = row.dataset.date;
-
-            // QUESTION
-            document.getElementById('edit-faq-question-de').value = row.dataset.question;
-            document.getElementById('edit-faq-question-en').value = row.dataset.question;
-
-            // CATEGORY
-            document.getElementById('edit-faq-category').value = row.dataset.category;
-
-            // STATUS
-            document.getElementById('edit-faq-status').value = row.dataset.status;
-
-            // DATE
-            document.getElementById('edit-faq-date').value = row.dataset.date;
-
-            // TYPE
-            document.getElementById('edit-faq-type').value = row.dataset.type;
-
-            // ANSWER TEXT
-            document.getElementById('edit-faq-answer-text').value = row.dataset.answer || '';
-
-            // VIDEO
-            document.getElementById('edit-faq-video-url').value = row.dataset.mediaId || '';
-
-            toggleFaqAnswerFields(row.dataset.type);
-
-        }
-
-
-
-        // Filter functionality
-        function initFilters() {
-            const tabs = document.querySelectorAll('.filter-tab');
-            const rows = document.querySelectorAll('#faqTable tbody tr');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function () {
-
-                    // Active state
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-
-                    const filterText = this.textContent.toLowerCase();
-
-                    rows.forEach(row => {
-
-                        const status = row.dataset.status;
-
-                        if (filterText.includes('all')) {
-                            row.style.display = '';
-                        }
-                        else if (filterText.includes('publish')) {
-                            row.style.display = status === 'published' ? '' : 'none';
-                        }
-                        else if (filterText.includes('draft')) {
-                            row.style.display = status === 'draft' ? '' : 'none';
-                        }
-
-                    });
-
-                });
-            });
-        }
-
-        document.getElementById('edit-faq-type').addEventListener('change', function () {
-            toggleFaqAnswerFields(this.value);
-        });
-
-        function toggleFaqAnswerFields(type) {
-
-            const textWrapper = document.getElementById('edit-faq-text-wrapper');
-            const videoWrapper = document.getElementById('edit-faq-video-wrapper');
-
-            if (type === 'video') {
-                textWrapper.classList.add('d-none');
-                videoWrapper.classList.remove('d-none');
-            } else {
-                textWrapper.classList.remove('d-none');
-                videoWrapper.classList.add('d-none');
-            }
-
-        }
-
-        // Auto-open modal if #new hash is present
-        if (window.location.hash === '#new') {
-            window.addEventListener('load', function() {
-                const modal = new bootstrap.Modal(document.getElementById('newFaqModal'));
-                modal.show();
-                history.replaceState(null, '', window.location.pathname);
-            });
-        }
-
-    </script>
 </body>
 
 </html>
