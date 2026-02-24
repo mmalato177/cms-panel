@@ -145,6 +145,24 @@ ul {
 }
 
 
+.back-link {
+  color: var(--dsr-blue);
+  text-decoration: none;
+  font-weight: 400;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.back-link:hover {
+  color: var(--dsr-yellow);
+  transform: translateX(-5px);
+}
+
+.back-link i{
+  font-size: 18px;
+}
+
 /* =====================================================
    Sidebar
 ===================================================== */

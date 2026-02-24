@@ -1,3 +1,49 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("id");
+
+  if (!slug) return;
+
+  const page = pages.find(p => p.slug === slug);
+
+  if (!page) {
+    console.error("Page not found");
+    return;
+  }
+
+  bindPageData(page);
+  bindBlockTitles(page);
+
+});
+
+function bindPageData(page) {
+  const elements = document.querySelectorAll(".page-bind");
+
+  elements.forEach(el => {
+    const key = el.dataset.bind;
+
+     if (page[key] !== undefined) {
+      if (Array.isArray(page[key])) {
+        el.textContent = page[key].join(" | "); 
+      } else {
+        el.textContent = page[key];
+      }
+    }
+  });
+}
+
+function bindBlockTitles(page) {
+  const blocks = document.querySelectorAll(".block-title");
+
+  blocks.forEach(el => {
+    const suffix = el.dataset.suffix;
+    el.textContent = `#${page.title.toLowerCase()} - ${suffix}`;
+  });
+}
+
+/***************************************************** */
 // Drag and Drop functionality for page content editor
 
 let draggedElement = null;
