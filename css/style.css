@@ -101,7 +101,7 @@ ul {
 
 .btn-primary:hover {
   background: var(--dsr-blue-hover);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 .btn-primary:active {
@@ -113,6 +113,37 @@ ul {
   color: var(--dsr-blue-dark);
   border: none;
 }
+
+#publishBtn {
+  background: #059669;
+  border:none;
+  color:#fff;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+#publishBtn:hover{
+  background: #198754;
+  transform: translateY(-4px);
+}
+
+#showPreviewBtn {
+  background: #f59e0b;
+  border:none;
+  color:#fff;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+#showPreviewBtn:hover {
+  background: #f06a03;
+  transform: translateY(-4px);
+}
+
+#revertBtn{
+  background: var(--dsr-yellow);
+  color: #fff;
+  border: none;
+}
+
 
 /* =====================================================
    Sidebar
@@ -386,6 +417,7 @@ ul {
   margin-left: 300px;
   padding: 60px 24px 60px 24px;
   transition: margin-left 0.4s ease, padding-top 0.4s ease;
+  
 }
 
 /* Quando sidebar fechada */
@@ -2559,4 +2591,20 @@ Pages
 .page-table th:nth-child(5),
 .page-table td:nth-child(5) {
     width: 50px; /* Actions */
+}
+
+
+/*==================================
+Page Content 
+=========================*/
+
+.card-header{
+  background-color: #f9fafb;
+  border-top: 5px solid var(--dsr-blue);
+  color: var(--gray-900);
+}
+
+.card-header-elements{
+  background-color:var(--gray-200);
+  color:var(--gray-600);
 }

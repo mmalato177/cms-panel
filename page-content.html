@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page Content – DSR24 CMS Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/sidebar.js" defer></script>
+    <script src="/js/loadPartials.js" defer></script>
+    <script src="/js/page-content.js" defer></script>
+</head>
+
+<body class="preload">
+    <div id="sidebar"></div>
+    <main id="main" class="bg-light">
+        <button class="openbtn" onclick="openNav()"><i class="bi bi-list"></i></button>
+        <div class="dashboard-content">
+            <!-- Page Header -->
+            <section class="page-header">
+                <div class="page-header-content">
+                    <div class="page-header-text">
+                        <h2 class="fw-bold">Edit Page Content - ( <span id="page-title"></span> )</h2>
+                        <span id="page-title" class="fst-italic me-2 text-white"></span> <span
+                            class="me-2 text-white" id="page-url"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Control Buttons -->
+            <div class="control-buttons mb-4 justify-content-start">
+                <div class="row mb-2 g-2 justify-content-end">
+                    <div class="col-auto">
+                        <button class="btn btn-outline-orange" id="showPreviewBtn">
+                            <i class="bi bi-eye"></i> Show preview
+                        </button>
+                    </div>
+
+                    <div class="col-auto">
+                        <button class="btn btn-success" id="publishBtn">
+                            <i class="bi bi-upload"></i> Publish
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mb-2 g-2">
+
+                    <div class="col-auto">
+                        <button class="btn btn-primary" id="saveChangesBtn">
+                            <i class="bi bi-check-circle"></i> Save changes
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-outline-secondary" id="cancelBtn">Cancel</button>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-auto">
+                        <button class="btn btn-warning" id="revertBtn">Revert non-public changes</button>
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <!-- Main Content Layout -->
+            <div class="row">
+                <!-- Left Side - Content Blocks -->
+                <div class="col-lg-8">
+                    <!-- Header Block -->
+                    <div class="content-block card mb-3">
+                        <div class="card-header d-flex justify-content-between align-items-center p-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="block-name fw-bold">#darklart - Header</span>
+                            </div>
+                            <div class="block-controls d-flex gap-2">
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" id="headerToggle" checked>
+                                </div>
+                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse"
+                                    data-bs-target="#headerOptions">
+                                    <i class="bi bi-chevron-down"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" id="deleteHeaderBtn">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body collapse show" id="headerOptions">
+                            <p class="text-muted">Nothing to customize here</p>
+                        </div>
+                    </div>
+
+                    <!-- Grid Block -->
+                    <div class="content-block card mb-3">
+                        <div class="card-header d-flex justify-content-between align-items-center p-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="block-name fw-bold">#darklart - Grid</span>
+                            </div>
+                            <div class="block-controls d-flex gap-2">
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" id="gridToggle" checked>
+                                </div>
+                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse"
+                                    data-bs-target="#gridOptions">
+                                    <i class="bi bi-chevron-down"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" id="deleteGridBtn">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body collapse show" id="gridOptions">
+                            <div class="table-responsive">
+                                <table class="table table-borderless mb-3">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Tools</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="gridItems">
+                                        <tr>
+                                            <td><strong>Schadengutachten</strong></td>
+                                            <td>Ein Schadengutachten is...</td>
+                                            <td>
+                                                <div class="btn-group btn-group-sm" role="group">
+                                                    <button class="btn btn-outline-secondary" title="Edit">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </button>
+                                                    <button class="btn btn-outline-secondary" title="Delete">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Nutzungsausfall</strong></td>
+                                            <td>XXX</td>
+                                            <td>
+                                                <div class="btn-group btn-group-sm" role="group">
+                                                    <button class="btn btn-outline-secondary" title="Edit">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </button>
+                                                    <button class="btn btn-outline-secondary" title="Delete">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button class="btn btn-primary btn-sm" id="addItemBtn">
+                                <i class="bi bi-plus"></i> Add explainer card
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Have Questions Block -->
+                    <div class="content-block card mb-3">
+                        <div class="card-header d-flex justify-content-between align-items-center p-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="block-name fw-bold">#darklart - Have Questions?</span>
+                            </div>
+                            <div class="block-controls d-flex gap-2">
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" id="questionsToggle" checked>
+                                </div>
+                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse"
+                                    data-bs-target="#questionsOptions">
+                                    <i class="bi bi-chevron-down"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" id="deleteQuestionsBtn">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body collapse show" id="questionsOptions">
+                            <p class="text-muted">Nothing to customize here</p>
+                        </div>
+                    </div>
+
+                    <!-- Add Element Zone -->
+                    <div class="add-element-zone text-center py-4 border-2 border-dashed rounded">
+                        <p class="text-muted mb-3">Want to add more content on this page?</p>
+                        <p class="text-muted mb-3">Drag & Drop next element here!</p>
+                    </div>
+                </div>
+
+                <!-- Right Side - Available Elements -->
+                <div class="col-lg-4">
+                    <div class="available-elements card sticky-top" style="top: 20px;">
+                        <div class="card-header-elements d-flex justify-content-between align-items-center p-3">
+                            <span class="mb-0 fs-5">Available Elements</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="element-group mb-4">
+                                <h6 class="fw-bold mb-2">Page Types</h6>
+                                <div class="list-group list-group-sm">
+                                    <a href="#" class="list-group-item list-group-item-action">#darklart Head</a>
+                                    <a href="#" class="list-group-item list-group-item-action">#darklart Grid</a>
+                                    <a href="#" class="list-group-item list-group-item-action">#darklart Have
+                                        Questions?</a>
+                                </div>
+                            </div>
+
+                            <div class="element-group mb-4">
+                                <h6 class="fw-bold mb-2">Block Types</h6>
+                                <div class="list-group list-group-sm">
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true">Video
+                                        FAQ</a>
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
+                                        Call-to-Action</a>
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
+                                        &lt;h1&gt;</a>
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
+                                        Text block</a>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info small">
+                                <i class="bi bi-info-circle"></i> Drag elements from here to the left to add them to the
+                                page.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

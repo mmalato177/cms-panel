@@ -481,3 +481,37 @@ function initializeFilters() {
 }
 
 initializeFilters();
+
+
+
+const pages = {
+  "homepage-en": {
+    title: "Homepage",
+    url: "dsr24.de/en/",
+    language:"EN"
+  },
+  "homepage-de":{
+    title:"Startseite",
+    url:"dsr24.de/",
+    language:"DE"
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const pageId = params.get("id");
+
+  // if job not found, stop
+  if (!pages[pageId]) return;
+
+  // select your DOM elements
+  const titleEl = document.getElementById("page-title");
+  const urlEl = document.getElementById("page-url");
+  const languageEl = document.getElementById("page-language");
+
+  // populate content
+  if (titleEl) titleEl.textContent = pages[pageId].title;
+  if (urlEl) urlEl.textContent = pages[pageId].url;
+  if (languageEl) languageEl.textContent = pages[pageId].language;
+
+});
