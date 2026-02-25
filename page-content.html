@@ -62,7 +62,6 @@
             <!-- Control Buttons -->
             <div class="control-buttons mb-4 justify-content-start">
                 <div class="row mb-2 g-2">
-
                     <div class="col-auto">
                         <button class="btn btn-primary" id="saveChangesBtn">
                             <i class="bi bi-check-circle"></i> Save changes
@@ -71,9 +70,11 @@
                     <div class="col-auto">
                         <button class="btn btn-outline-secondary" id="cancelBtn">Cancel</button>
                     </div>
+
+                </div>
+                <div class="row">
                     <div class="col-auto">
                         <button class="btn btn-warning" id="revertBtn">Revert non-public changes</button>
-
                     </div>
                 </div>
             </div>
@@ -83,120 +84,7 @@
                 <!-- Left Side - Content Blocks -->
                 <div class="col-lg-8">
                     <!-- Header Block -->
-                    <div class="content-block card mb-3">
-                        <div class="card-header d-flex justify-content-between align-items-center p-3">
-                            <div class="d-flex align-items-center gap-2">
-                                <span class="block-title fw-bold" data-suffix="Header"></span>
-                            </div>
-                            <div class="block-controls d-flex gap-2">
-                                <div class="form-check form-switch m-0">
-                                    <input class="form-check-input" type="checkbox" id="headerToggle" checked>
-                                </div>
-                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse"
-                                    data-bs-target="#headerOptions">
-                                    <i class="bi bi-chevron-down"></i>
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary" id="deleteHeaderBtn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body collapse show" id="headerOptions">
-                            <p class="text-muted">Nothing to customize here</p>
-                        </div>
-                    </div>
-
-                    <!-- Grid Block -->
-                    <div class="content-block card mb-3">
-                        <div class="card-header d-flex justify-content-between align-items-center p-3">
-                            <div class="d-flex align-items-center gap-2">
-                                <span class="block-title fw-bold" data-suffix="Grid"></span>
-                            </div>
-                            <div class="block-controls d-flex gap-2">
-                                <div class="form-check form-switch m-0">
-                                    <input class="form-check-input" type="checkbox" id="gridToggle" checked>
-                                </div>
-                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse"
-                                    data-bs-target="#gridOptions">
-                                    <i class="bi bi-chevron-down"></i>
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary" id="deleteGridBtn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body collapse show" id="gridOptions">
-                            <div class="table-responsive">
-                                <table class="table table-borderless mb-3">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                            <th>Tools</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="gridItems">
-                                        <tr>
-                                            <td><strong>Schadengutachten</strong></td>
-                                            <td>Ein Schadengutachten is...</td>
-                                            <td>
-                                                <div class="btn-group btn-group-sm" role="group">
-                                                    <button class="btn btn-outline-secondary" title="Edit">
-                                                        <i class="bi bi-pencil"></i>
-                                                    </button>
-                                                    <button class="btn btn-outline-secondary" title="Delete">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Nutzungsausfall</strong></td>
-                                            <td>XXX</td>
-                                            <td>
-                                                <div class="btn-group btn-group-sm" role="group">
-                                                    <button class="btn btn-outline-secondary" title="Edit">
-                                                        <i class="bi bi-pencil"></i>
-                                                    </button>
-                                                    <button class="btn btn-outline-secondary" title="Delete">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <button class="btn btn-primary btn-sm" id="addItemBtn">
-                                <i class="bi bi-plus"></i> Add explainer card
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Have Questions Block -->
-                    <div class="content-block card mb-3">
-                        <div class="card-header d-flex justify-content-between align-items-center p-3">
-                            <div class="d-flex align-items-center gap-2">
-                                <span class="block-title fw-bold" data-suffix="Have Questions?"></span>
-                            </div>
-                            <div class="block-controls d-flex gap-2">
-                                <div class="form-check form-switch m-0">
-                                    <input class="form-check-input" type="checkbox" id="questionsToggle" checked>
-                                </div>
-                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse"
-                                    data-bs-target="#questionsOptions">
-                                    <i class="bi bi-chevron-down"></i>
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary" id="deleteQuestionsBtn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body collapse show" id="questionsOptions">
-                            <p class="text-muted">Nothing to customize here</p>
-                        </div>
-                    </div>
-
+                    <div id="blocksContainer"></div>
                     <!-- Add Element Zone -->
                     <div class="add-element-zone text-center py-4 border-2 border-dashed rounded">
                         <p class="text-muted mb-3">Want to add more content on this page?</p>
@@ -214,14 +102,27 @@
                             <div class="element-group mb-4">
                                 <h6 class="fw-bold mb-2">Page Types</h6>
                                 <div class="list-group list-group-sm">
-                                    <a href="#" class="list-group-item list-group-item-action block-title"
-                                        data-suffix="Head"></a>
-                                    <a href="#" class="list-group-item list-group-item-action block-title"
-                                        data-suffix="Grid"></a>
-                                    <a href="#" class="list-group-item list-group-item-action block-title"
-                                        data-suffix="Have Questions?"></a>
-                                    <a href="#" class="list-group-item list-group-item-action block-title"
-                                        data-suffix="Sections"></a>
+
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true"
+                                        data-block-type="header">
+                                        Header
+                                    </a>
+
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true"
+                                        data-block-type="grid">
+                                        Grid
+                                    </a>
+
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true"
+                                        data-block-type="faq">
+                                        Have Questions?
+                                    </a>
+
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true"
+                                        data-block-type="sections">
+                                        Sections
+                                    </a>
+
                                 </div>
                             </div>
 
@@ -229,18 +130,18 @@
                                 <h6 class="fw-bold mb-2">Block Types</h6>
                                 <div class="list-group list-group-sm">
                                     <a href="#" class="list-group-item list-group-item-action" draggable="true">Video
-                                        </a>
+                                    </a>
                                     <a href="#" class="list-group-item list-group-item-action" draggable="true">Image
-                                        </a>
+                                    </a>
                                     <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
                                         Call-to-Action</a>
                                     <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
                                         &lt;h1&gt;</a>
                                     <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
                                         Text block</a>
-                                         <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
                                         Back Button</a>
-                                         <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
+                                    <a href="#" class="list-group-item list-group-item-action" draggable="true">Generic
                                         Link Button</a>
                                 </div>
                             </div>
