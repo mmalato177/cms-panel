@@ -62,14 +62,14 @@ function renderBlocks(page) {
       <div class="card-header d-flex justify-content-between align-items-center p-3">
         <div class="d-flex align-items-center gap-2">
           <span class="fw-bold">
-            #${page.slug} - ${block.label}
+            #${page.slug} - ${block.type}
           </span>
         </div>
         <div class="block-controls d-flex gap-2">
           <div class="form-check form-switch m-0">
             <input class="form-check-input toggle-block"
               type="checkbox"
-              ${block.active ? "checked" : ""}>
+              ${block.enabled ? "checked" : ""}>
           </div>
           <button class="btn btn-sm btn-outline-secondary">
             <i class="bi bi-chevron-down"></i>
