@@ -2627,6 +2627,19 @@ Page Content
   color:var(--gray-600);
 }
 
+/* Smooth collapse for block body */
+.block-collapse {
+  overflow: hidden;
+  max-height: 2000px; /* big default; JS will set exact height */
+  transition: max-height 220ms ease, opacity 220ms ease;
+  opacity: 1;
+}
+
+.block-collapse.is-collapsed {
+  max-height: 0 !important;
+  opacity: 0;
+}
+
 /* =====================================================
    Language Selector Dropdown
 ===================================================== */

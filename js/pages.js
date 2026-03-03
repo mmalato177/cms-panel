@@ -183,7 +183,7 @@ window.pages = [
                         },
 
                         {
-                            type: "stats",
+                            type: "dsrTemplate1.homepage.stats",
                             enabled: true,
                             title: "DSR24 Statistics",
                             subtitle: "Statistics",

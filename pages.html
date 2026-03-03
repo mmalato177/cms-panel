@@ -129,6 +129,116 @@
 
     </main>
 
+    <!-- New Page Modal -->
+    <div class="modal fade" id="newPageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-file-earmark"></i> Create New Page
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="pageForm">
+
+                        <div class="row g-4">
+
+                            <!-- LEFT COLUMN (Content) -->
+                            <div class="col-lg-8">
+
+                                <!-- Title -->
+                                <div class="mb-3">
+                                    <label class="form-label">Page Name</label>
+                                    <input type="text" class="form-control" id="page-title">
+                                </div>
+
+                                <!-- Content -->
+                                <div class="mb-3">
+                                    <label class="form-label">Content (Initial Blocks)</label>
+                                    <div class="form-control p-4 new-page-container" id="page-content">
+                                     
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- RIGHT COLUMN (Settings) -->
+                            <div class="col-lg-4">
+
+                                <!-- Language Checkbox-->
+                                <div class="mb-3">
+                                    <label class="form-label">Languages</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">German - DE</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label">English - EN</label>
+                                    </div>
+                                </div>
+
+                                <!-- Block Types -->
+                                <div class="mb-3">
+                                    <h6 class="fw-bold mb-2">Block Types</h6>
+                                    <div class="available-elements">
+                                        <div class="card-body">
+                                            <div class="element-group mb-4">
+
+                                                <div class="list-group list-group-sm">
+                                                    <a href="#" class="list-group-item list-group-item-action"
+                                                        draggable="true" data-drag-kind="block"
+                                                        data-block-type="dsrTemplate1.generic.header">
+                                                        Header Section
+                                                    </a>
+
+                                                    <a href="#" class="list-group-item list-group-item-action"
+                                                        draggable="true" data-drag-kind="block"
+                                                        data-block-type="dsrTemplate1.generic.grid">
+                                                        Grid Section
+                                                    </a>
+
+                                                    <a href="#" class="list-group-item list-group-item-action"
+                                                        draggable="true" data-drag-kind="block"
+                                                        data-block-type="dsrTemplate1.generic.text_image_section">
+                                                        Text and Image Section
+                                                    </a>
+
+                                                    <a href="#" class="list-group-item list-group-item-action"
+                                                        draggable="true" data-drag-kind="block"
+                                                        data-block-type="dsrTemplate1.homepage.call_to_action">
+                                                        Call-to-Action
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="savePageBtn">
+                        <i class="bi bi-check-lg"></i> Save Page
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div id="archive-modal"></div>
     <div id="success-toast"></div>
 </body>

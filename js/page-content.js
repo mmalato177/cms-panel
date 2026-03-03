@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const slug = params.get("id");
   const lang = (params.get("lang") || "DE").toUpperCase(); // default DE
 
+  // for these -> create collection tabs
   if (["services", "job-details", "news-details", "use-case"].includes(slug)) {
     initCollectionTabs(slug, lang);
     return;
@@ -25,11 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!page) return console.error("Page not found");
 
   // Language-specific content object (DE/EN)
-  // NOTE: Your content objects must have: { lang: "DE" } or adapt line below to use "language"
   const content = (page.contents || []).find(c => (c.lang || c.language) === lang);
   if (!content) return console.error("Language content not found");
 
+  // send data to page - so it can be used "Title - Page Name" etc.
   bindPageData(page, content);
+
+  // render blocks 
   renderBlocks(page, content);
 
   // One-time event delegation binder (inputs, tables add/remove)
@@ -146,7 +149,7 @@ const BLOCK_SCHEMAS = {
     ]
   },
 
-  // ---------- Homepage examples ----------
+  // ---------- Homepage examples SCHEMA ----------
   "dsrTemplate1.homepage.hero": {
     label: "Homepage Hero",
     fields: [
@@ -257,7 +260,7 @@ const BLOCK_SCHEMAS = {
     ]
   },
 
-  "stats": {
+  "dsrTemplate1.homepage.stats": {
     label: "Statistics",
     fields: [
       { key: "title", label: "Title", control: "text" },
@@ -327,7 +330,10 @@ function renderBlocks(page, content) {
     blockEl.className = "content-block card mb-3";
     blockEl.draggable = true;
     blockEl.dataset.blockId = block.id;
+    const isCollapsed = !!block.collapsed;
 
+
+    // block HTML
     blockEl.innerHTML = `
       <div class="card-header d-flex justify-content-between align-items-center p-3">
         <div class="d-flex align-items-center gap-2">
@@ -339,8 +345,8 @@ function renderBlocks(page, content) {
             <input class="form-check-input toggle-block" type="checkbox" ${block.enabled ? "checked" : ""}>
           </div>
 
-          <button class="btn btn-sm btn-outline-secondary" type="button">
-            <i class="bi bi-chevron-down"></i>
+           <button class="btn btn-sm btn-outline-secondary collapse-block-btn" type="button" aria-expanded="${!isCollapsed}">
+            <i class="bi ${isCollapsed ? "bi-chevron-right" : "bi-chevron-down"}"></i>
           </button>
 
           <button class="btn btn-sm btn-outline-secondary delete-block-btn" type="button">
@@ -350,7 +356,9 @@ function renderBlocks(page, content) {
       </div>
 
       <div class="card-body">
-        ${renderBlockContent(block)}
+        <div class="block-collapse ${isCollapsed ? "is-collapsed" : ""}">
+          ${renderBlockContent(block)}
+        </div>
       </div>
     `;
 
@@ -431,7 +439,7 @@ function renderAutoField(block, key) {
       ? `
         <div class="mb-3">
           <label class="form-label fw-bold">${escapeHtml(key)}</label>
-          <textarea class="form-control" rows="3" data-field="${escapeHtml(key)}">${escapeHtml(val)}</textarea>
+          <textarea class="form-control" rows="5" data-field="${escapeHtml(key)}">${escapeHtml(val)}</textarea>
         </div>
       `
       : `
@@ -570,7 +578,7 @@ function renderField(block, field) {
   }
 
   if (control === "textarea") {
-    const rows = field.rows ?? 4;
+    const rows = field.rows ?? 5;
     return `
       <div class="mb-3">
         <label class="form-label fw-bold">${escapeHtml(field.label)}</label>
@@ -697,6 +705,48 @@ function attachBlockControls(page, content) {
       blockEl.remove();
     });
   });
+
+  // Collapse Toggle
+  container.querySelectorAll(".collapse-block-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const blockEl = this.closest(".content-block");
+      const blockId = blockEl?.dataset.blockId;
+      const block = getBlockById(content, blockId);
+      if (!block) return;
+
+      const collapseEl = blockEl.querySelector(".block-collapse");
+      if (!collapseEl) return;
+
+      const willCollapse = !collapseEl.classList.contains("is-collapsed");
+
+      // persist in JSON
+      block.collapsed = willCollapse;
+
+      // smooth animation
+      if (willCollapse) {
+        collapseEl.style.maxHeight = collapseEl.scrollHeight + "px";
+        collapseEl.offsetHeight; // reflow
+        collapseEl.classList.add("is-collapsed");
+        collapseEl.style.maxHeight = "0px";
+      } else {
+        collapseEl.classList.remove("is-collapsed");
+        collapseEl.style.maxHeight = collapseEl.scrollHeight + "px";
+        const onEnd = () => {
+          collapseEl.style.maxHeight = "";
+          collapseEl.removeEventListener("transitionend", onEnd);
+        };
+        collapseEl.addEventListener("transitionend", onEnd);
+      }
+
+      // icon swap
+      const icon = this.querySelector("i");
+      if (icon) {
+        icon.classList.toggle("bi-chevron-down", !willCollapse);
+        icon.classList.toggle("bi-chevron-right", willCollapse);
+      }
+    });
+  });
+
 
   // Enabled toggle (also updates JSON)
   container.querySelectorAll(".toggle-block").forEach(toggle => {
@@ -973,7 +1023,7 @@ function syncBlocksOrderFromDOM(container, content) {
 /* ---------- Factories (defaults for new things) ---------- */
 
 function createBlock(type) {
-  const base = { id: crypto.randomUUID(), type, enabled: true };
+  const base = { id: crypto.randomUUID(), type, enabled: true, collapsed: false };
 
   // if schema exists, you can prefill some keys so editor looks nice
   const schema = BLOCK_SCHEMAS[type];
