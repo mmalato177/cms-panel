@@ -38,6 +38,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // drag & drop
   initializeDragAndDrop(page, content);
   wirePaletteDragAndDrop(page, content);
+
+  // Language selector handler
+  const languageSelect = document.getElementById("languageSelect");
+  if (languageSelect) {
+    languageSelect.value = lang;
+    languageSelect.addEventListener("change", (e) => {
+      const newLang = e.target.value;
+      const newUrl = `${window.location.pathname}?id=${slug}&lang=${newLang}`;
+      window.location.href = newUrl;
+    });
+  }
 });
 
 

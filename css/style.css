@@ -2626,3 +2626,53 @@ Page Content
   background-color:var(--gray-200);
   color:var(--gray-600);
 }
+
+/* =====================================================
+   Language Selector Dropdown
+===================================================== */
+.language-selector {
+  display: inline-block;
+}
+
+.language-dropdown {
+  padding: 12px 16px;
+  border: 2px solid var(--dsr-blue);
+  border-radius: 8px;
+  background: white;
+  color: var(--dsr-blue);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 220px;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2319599C' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+.language-dropdown:hover {
+  border-color: var(--dsr-blue-hover);
+  box-shadow: 0 4px 12px rgba(25, 89, 156, 0.15);
+  transform: translateY(-2px);
+}
+
+.language-dropdown:focus {
+  outline: none;
+  border-color: var(--dsr-blue-hover);
+  box-shadow: 0 0 0 3px rgba(25, 89, 156, 0.1);
+}
+
+.language-dropdown option {
+  padding: 10px;
+  background: white;
+  color: var(--dsr-blue);
+}
+
+.language-dropdown option:checked {
+  background: linear-gradient(var(--dsr-blue), var(--dsr-blue));
+  color: white;
+}
+
